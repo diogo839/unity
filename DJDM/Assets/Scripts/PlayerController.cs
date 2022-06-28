@@ -80,7 +80,7 @@ public class PlayerController : MonoBehaviour {
                 shoot = SimpleInput.GetButtonDown("Shoot");
             }
 
-            myRigidbody.velocity = new Vector2(moveDirection * walkSpeed,
+            myRigidbody.velocity = new Vector2(moveDirection * walkSpeed * GameManager.Instance.SpeedMultiplier(),
                 myRigidbody.velocity.y);
             myAnimator.SetFloat("HorizontalVelocity",
                 Mathf.Abs(myRigidbody.velocity.x));
@@ -153,7 +153,7 @@ public class PlayerController : MonoBehaviour {
 
         myRigidbody.velocity = new Vector2(
             myRigidbody.velocity.x, 0);
-        myRigidbody.AddForce(Vector2.up * jumpForce);
+        myRigidbody.AddForce(Vector2.up * jumpForce * GameManager.Instance.JumpMultiplier());
     }
 
     private void UpdateLifebar () {
