@@ -35,9 +35,6 @@ public class PlayerController : MonoBehaviour {
     private AudioClip[] shootAudioClips;
     private AudioSource myAudioSource;
 
-    [Header("Abilities")]
-    private bool canDoubleJump = false;
-
     private Rigidbody2D myRigidbody = null;
     private Animator myAnimator = null;
 
@@ -112,22 +109,18 @@ public class PlayerController : MonoBehaviour {
             if (onGround) {
                 jumps = 1;
                 Jump();
-            } else if (jumps < 2 && canDoubleJump) {
+            } else if (jumps < 2 && GameManager.Instance.CanDoubleJump()) {
                 jumps = 2;
                 Jump();
             }
         }
 
-        if (shoot) {
+        if (shoot && GameManager.Instance.CanShoot()) {
             Shoot();
         }
 
         jump = false;
         shoot = false;
-    }
-
-    public void UnlockDoubleJump() {
-        canDoubleJump = true;
     }
 
     private bool CheckForFlip () {
@@ -155,7 +148,9 @@ public class PlayerController : MonoBehaviour {
     }
 
     private void Jump () {
-        myAudioSource.PlayOneShot(jumpAudioClip);
+        //play jump audio
+        //myAudioSource.PlayOneShot(jumpAudioClip);
+
         myRigidbody.velocity = new Vector2(
             myRigidbody.velocity.x, 0);
         myRigidbody.AddForce(Vector2.up * jumpForce);
@@ -194,10 +189,9 @@ public class PlayerController : MonoBehaviour {
         brick.SetActive(true);
         brick.GetComponent<Rigidbody2D>().velocity =
             shootPointTransform.right * shootSpeed;
-        myAudioSource.PlayOneShot(shootAudioClips[Random.Range(0, shootAudioClips.Length)]);
 
-
-        //SmoothFollow.Instance.Shake(0.1f, 0.05f);
+        //play shoot audio
+        //myAudioSource.PlayOneShot(shootAudioClips[Random.Range(0, shootAudioClips.Length)]);
     }
 }
 
