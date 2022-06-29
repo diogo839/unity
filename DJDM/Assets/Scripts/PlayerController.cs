@@ -46,6 +46,10 @@ public class PlayerController : MonoBehaviour {
     private bool isAlive = true;
     private bool shoot = false;
 
+    private bool hit = false;
+
+
+
     private void Awake () {
         myRigidbody = GetComponent<Rigidbody2D>();
         myAnimator = GetComponent<Animator>();
@@ -74,6 +78,12 @@ public class PlayerController : MonoBehaviour {
                 jump = SimpleInput.GetButtonDown("Jump");
             }
 
+            if (!hit)
+            {
+                hit = SimpleInput.GetButtonDown("Fire1");
+
+            }
+
             if (!shoot) {
                 shoot = SimpleInput.GetButtonDown("Shoot");
             }
@@ -97,28 +107,46 @@ public class PlayerController : MonoBehaviour {
     private void FixedUpdate () {
 
         onGround = CheckForGround();
-        if (onGround) {
+        if (onGround)
+        {
             jumps = 0;
         }
         // if (jump && onGround) {
         //     Jump();
         // }
-        if (jump) {
-            if (onGround) {
+        if (jump)
+        {
+            if (onGround)
+            {
                 jumps = 1;
+                myAnimator.SetFloat("HorizontalVelocity",
+              Mathf.Abs(0));
                 Jump();
-            } else if (jumps < 2 && GameManager.Instance.CanDoubleJump()) {
+            }
+            else if (jumps < 2 && GameManager.Instance.CanDoubleJump())
+            {
                 jumps = 2;
                 Jump();
             }
         }
+        if (hit && !jump)
+        {
+            myAnimator.SetBool("attack", true);
+        }
+        if (!hit && !jump)
+        {
+           myAnimator.SetBool("attack", false);
+        }
 
-        if (shoot && GameManager.Instance.CanShoot()) {
+        if (shoot)
+        {
             Shoot();
         }
 
         jump = false;
         shoot = false;
+        hit = false;
+
     }
 
 

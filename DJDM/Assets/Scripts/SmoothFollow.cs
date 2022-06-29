@@ -144,4 +144,4 @@ public class SmoothFollow : MonoBehaviour
         SetCameraLimits();
     }
     }
-}
+
