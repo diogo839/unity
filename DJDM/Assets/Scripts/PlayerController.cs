@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PlayerController : MonoBehaviour {
+public class PlayerController : MonoBehaviour
+{
     [SerializeField]
     private float walkSpeed = 3f;
     [SerializeField]
@@ -48,7 +49,8 @@ public class PlayerController : MonoBehaviour {
     private bool isAlive = true;
     private bool shoot = false;
 
-    private void Awake () {
+    private void Awake()
+    {
         myRigidbody = GetComponent<Rigidbody2D>();
         myAnimator = GetComponent<Animator>();
         myAudioSource = GetComponent<AudioSource>();
@@ -56,27 +58,34 @@ public class PlayerController : MonoBehaviour {
         life = initialLife;
     }
 
-    private void Start () {
+    private void Start()
+    {
         UpdateLifebar();
     }
 
-    private void Update () {
-        if (GameManager.Instance.IsPaused) {
+    private void Update()
+    {
+        if (GameManager.Instance.IsPaused)
+        {
             return;
         }
 
-        if (isAlive) {
+        if (isAlive)
+        {
             moveDirection = SimpleInput.GetAxis("Horizontal");
 
-            if (CheckForFlip()) {
+            if (CheckForFlip())
+            {
                 Flip();
             }
 
-            if (!jump) {
+            if (!jump)
+            {
                 jump = SimpleInput.GetButtonDown("Jump");
             }
 
-            if (!shoot) {
+            if (!shoot)
+            {
                 shoot = SimpleInput.GetButtonDown("Shoot");
             }
 
@@ -89,33 +98,41 @@ public class PlayerController : MonoBehaviour {
             * DEBUG
             */
 
-            if (Input.GetKeyDown(KeyCode.K)) {
+            if (Input.GetKeyDown(KeyCode.K))
+            {
                 TakeDamage(25f);
             }
         }
     }
 
     private int jumps = 0;
-    private void FixedUpdate () {
+    private void FixedUpdate()
+    {
 
         onGround = CheckForGround();
-        if (onGround) {
+        if (onGround)
+        {
             jumps = 0;
         }
         // if (jump && onGround) {
         //     Jump();
         // }
-        if (jump) {
-            if (onGround) {
+        if (jump)
+        {
+            if (onGround)
+            {
                 jumps = 1;
                 Jump();
-            } else if (jumps < 2 && GameManager.Instance.CanDoubleJump()) {
+            }
+            else if (jumps < 2 && GameManager.Instance.CanDoubleJump())
+            {
                 jumps = 2;
                 Jump();
             }
         }
 
-        if (shoot && GameManager.Instance.CanShoot()) {
+        if (shoot && GameManager.Instance.CanShoot())
+        {
             Shoot();
         }
 
@@ -123,31 +140,37 @@ public class PlayerController : MonoBehaviour {
         shoot = false;
     }
 
-    private bool CheckForFlip () {
+    private bool CheckForFlip()
+    {
         return (transform.right.x > 0 && moveDirection < 0) ||
             (transform.right.x < 0 && moveDirection > 0);
     }
 
-    private bool CheckForGround () {
+    private bool CheckForGround()
+    {
 
-        for (int i = 0; i < feetTransform.Length; i++) {
+        for (int i = 0; i < feetTransform.Length; i++)
+        {
             if (Physics2D.OverlapPointNonAlloc(
                 feetTransform[i].position,
                 groundCheckColliders,
-                groundLayerMask) > 0) {
+                groundLayerMask) > 0)
+            {
                 return true;
             }
         }
         return false;
     }
 
-    private void Flip () {
+    private void Flip()
+    {
         Vector3 targetRotation = transform.localEulerAngles;
         targetRotation.y += 180f;
         transform.localEulerAngles = targetRotation;
     }
 
-    private void Jump () {
+    private void Jump()
+    {
         //play jump audio
         //myAudioSource.PlayOneShot(jumpAudioClip);
 
@@ -156,32 +179,39 @@ public class PlayerController : MonoBehaviour {
         myRigidbody.AddForce(Vector2.up * jumpForce * GameManager.Instance.JumpMultiplier());
     }
 
-    private void UpdateLifebar () {
+    private void UpdateLifebar()
+    {
         lifebarImage.fillAmount = life / initialLife;
     }
 
-    public void TakeDamage (float damage) {
-        if (isAlive) {
+    public void TakeDamage(float damage)
+    {
+        if (isAlive)
+        {
             life -= damage;
 
-            if (life < 0) {
+            if (life < 0)
+            {
                 life = 0;
             }
 
             UpdateLifebar();
 
-            if (life == 0) {
+            if (life == 0)
+            {
                 isAlive = false;
                 Die();
             }
         }
     }
 
-    private void Die () {
+    private void Die()
+    {
         Destroy(gameObject);
     }
 
-    private void Shoot () {
+    private void Shoot()
+    {
         //GameObject brick = Instantiate(projectilePrefab);
         GameObject brick = ObjectPoolingManager.Instance.GetPooledObject();
         brick.transform.position = shootPointTransform.position;
@@ -194,4 +224,3 @@ public class PlayerController : MonoBehaviour {
         //myAudioSource.PlayOneShot(shootAudioClips[Random.Range(0, shootAudioClips.Length)]);
     }
 }
-
