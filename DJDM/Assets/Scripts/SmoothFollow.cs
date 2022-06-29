@@ -9,6 +9,14 @@ public class SmoothFollow : MonoBehaviour {
     private Transform targetTransform = null;
     [SerializeField]
     private float smoothTime = 0.5f;
+    [SerializeField]
+    private Transform topLimitTransform = null;
+    [SerializeField]
+    private Transform bottomLimitTransform = null;
+    [SerializeField]
+    private Transform leftLimitTransform = null;
+    [SerializeField]
+    private Transform rightLimitTransform = null;
 
     private float cameraZOffset = 0f;
     private Vector3 cameraVelocity;
@@ -33,18 +41,31 @@ public class SmoothFollow : MonoBehaviour {
         cameraZOffset = transform.position.z;
 
         myCamera = GetComponent<Camera>();
+        SetCameraLimits();
     }
 
-    private void Update() {
-        if (Input.GetKeyDown(KeyCode.L)) {
-            Shake(0.5f, 3f);
-        }
-    }
+    //private void Update() {
+    //    if (Input.GetKeyDown(KeyCode.L)) {
+    //        Shake(0.5f, 3f);
+    //    }
+    //}
 
     private void LateUpdate() {
         Vector3 targetPosition = targetTransform.position;
         targetPosition.z = cameraZOffset;
 
+
+        targetPosition.x = Mathf.Clamp(
+            targetPosition.x,
+            leftLimit,
+            rightLimit
+            );
+
+        targetPosition.y = Mathf.Clamp(
+            targetPosition.y,
+            bottomLimit,
+            topLimit
+            );
         transform.position = Vector3.SmoothDamp(
             transform.position,
             targetPosition,
@@ -74,10 +95,40 @@ public class SmoothFollow : MonoBehaviour {
         }
     }
 
-    public void Shake(float duration, float range) {
-        if (lastShakeCoroutine != null) {
-            StopCoroutine(lastShakeCoroutine);
-        }
-        lastShakeCoroutine = StartCoroutine(DoShake(1f, 0.75f));
+    //public void Shake(float duration, float range) {
+    //    if (lastShakeCoroutine != null) {
+    //        StopCoroutine(lastShakeCoroutine);
+    //    }
+    //    lastShakeCoroutine = StartCoroutine(DoShake(1f, 0.75f));
+    //}
+
+    public void SetCameraLimits() {
+        float halfHeight = myCamera.orthographicSize;
+        float halfWidth = halfHeight * myCamera.aspect;
+
+        leftLimit = leftLimitTransform.position.x + halfWidth;
+        rightLimit = rightLimitTransform.position.x - halfWidth;
+        bottomLimit = bottomLimitTransform.position.y + halfHeight;
+        topLimit = topLimitTransform.position.y - halfHeight;
+    }
+
+    public void SetLeftLimit(Transform left) {
+        leftLimitTransform = left;
+        SetCameraLimits();
+    }
+
+    public void SetRightLimit(Transform right) {
+        rightLimitTransform = right;
+        SetCameraLimits();
+    }
+
+    public void SetTopLimit(Transform top) {
+        topLimitTransform = top;
+        SetCameraLimits();
+    }
+
+    public void SetBottomLimit(Transform bottom) {
+        bottomLimitTransform = bottom;
+        SetCameraLimits();
     }
 }

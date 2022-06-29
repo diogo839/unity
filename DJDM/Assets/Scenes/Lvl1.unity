@@ -642,7 +642,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 3
+  orthographic size: 2.5
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -687,6 +687,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetTransform: {fileID: 1636695102}
   smoothTime: 0.5
+  topLimitTransform: {fileID: 1067911725}
+  bottomLimitTransform: {fileID: 2126711035}
+  leftLimitTransform: {fileID: 1779825097}
+  rightLimitTransform: {fileID: 1848146754}
 --- !u!1 &551106728
 GameObject:
   m_ObjectHideFlags: 0
@@ -1008,7 +1012,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1067911724}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalPosition: {x: 0, y: 4, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1286,7 +1290,7 @@ MonoBehaviour:
   groundLayerMask:
     serializedVersion: 2
     m_Bits: 8
-  shootPointTransform: {fileID: 0}
+  shootPointTransform: {fileID: 1896367654}
   shootSpeed: 6
 --- !u!95 &1636695104
 Animator:

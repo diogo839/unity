@@ -44,6 +44,10 @@ public class PlayerController : MonoBehaviour {
             jump = SimpleInput.GetButtonDown("Jump");
         }
 
+        if (!shoot) {
+            shoot = SimpleInput.GetButtonDown("Shoot");
+        }
+
         myRigidbody.velocity = new Vector2(moveDirection * walkSpeed,
             myRigidbody.velocity.y);
         myAnimator.SetFloat("HorizontalVelocity",
@@ -102,6 +106,6 @@ public class PlayerController : MonoBehaviour {
         gem.GetComponent<Rigidbody2D>().velocity =
             shootPointTransform.right * shootSpeed;
 
-        SmoothFollow.Instance.Shake(0.1f, 0.05f);
+        //SmoothFollow.Instance.Shake(0.1f, 0.05f);
     }
 }
