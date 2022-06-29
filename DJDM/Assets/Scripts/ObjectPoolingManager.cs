@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public class ObjectPoolingManager : MonoBehaviour {
     public static ObjectPoolingManager Instance { get; private set; }
 
     [SerializeField]
@@ -14,7 +15,7 @@ using UnityEngine;
     private List<GameObject> poolOfObjects = new List<GameObject>();
 
 
-    private void Awake () {
+    private void Awake() {
         if (Instance == null) {
             Instance = this;
         } else {
@@ -27,8 +28,8 @@ using UnityEngine;
             poolOfObjects.Add(newObject);
         }
     }
-    
-    public GameObject GetPooledObject () {
+
+    public GameObject GetPooledObject() {
         for (int i = 0; i < poolOfObjects.Count; i++) {
             if (!poolOfObjects[i].activeInHierarchy) {
                 return poolOfObjects[i];
@@ -44,6 +45,4 @@ using UnityEngine;
 
         return null;
     }
-
-
 }

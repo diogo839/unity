@@ -16,8 +16,6 @@ public class PlayerController : MonoBehaviour {
     private float initialLife = 150f;
     [Header("Shoot")]
     [SerializeField]
-    private GameObject projectilePrefab = null;
-    [SerializeField]
     private Transform shootPointTransform = null;
     [SerializeField]
     private float shootSpeed = 6f;
@@ -156,7 +154,7 @@ public class PlayerController : MonoBehaviour {
     }
 
     private void UpdateLifebar () {
-        lifebarImage.fillAmount = life / initialLife;
+        //lifebarImage.fillAmount = life / initialLife;
     }
 
     public void TakeDamage (float damage) {
