@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public class ObjectPoolingManager : MonoBehaviour {
+
     public static ObjectPoolingManager Instance { get; private set; }
 
     [SerializeField]
