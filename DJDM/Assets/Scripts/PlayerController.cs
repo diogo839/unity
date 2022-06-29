@@ -12,10 +12,8 @@ public class PlayerController : MonoBehaviour {
     private Transform[] feetTransform = null;
     [SerializeField]
     private LayerMask groundLayerMask = 128;
-
     [SerializeField]
     private float initialLife = 150f;
-
     [Header("Shoot")]
     [SerializeField]
     private GameObject projectilePrefab = null;
@@ -33,8 +31,8 @@ public class PlayerController : MonoBehaviour {
     private AudioClip jumpAudioClip;
     [SerializeField]
     private AudioClip[] shootAudioClips;
+    
     private AudioSource myAudioSource;
-
     private Rigidbody2D myRigidbody = null;
     private Animator myAnimator = null;
 
@@ -123,13 +121,13 @@ public class PlayerController : MonoBehaviour {
         shoot = false;
     }
 
+
     private bool CheckForFlip () {
         return (transform.right.x > 0 && moveDirection < 0) ||
             (transform.right.x < 0 && moveDirection > 0);
     }
 
     private bool CheckForGround () {
-
         for (int i = 0; i < feetTransform.Length; i++) {
             if (Physics2D.OverlapPointNonAlloc(
                 feetTransform[i].position,
@@ -141,12 +139,13 @@ public class PlayerController : MonoBehaviour {
         return false;
     }
 
+
     private void Flip () {
         Vector3 targetRotation = transform.localEulerAngles;
         targetRotation.y += 180f;
         transform.localEulerAngles = targetRotation;
     }
-
+    
     private void Jump () {
         //play jump audio
         //myAudioSource.PlayOneShot(jumpAudioClip);
@@ -194,4 +193,3 @@ public class PlayerController : MonoBehaviour {
         //myAudioSource.PlayOneShot(shootAudioClips[Random.Range(0, shootAudioClips.Length)]);
     }
 }
-

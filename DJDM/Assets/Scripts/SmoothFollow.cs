@@ -33,6 +33,7 @@ public class SmoothFollow : MonoBehaviour
 
     private Camera myCamera = null;
 
+
     private void Awake(){
         if (Instance == null) {
             Instance = this;
@@ -40,6 +41,7 @@ public class SmoothFollow : MonoBehaviour
             Destroy(gameObject);
         }
         cameraZOffset = transform.position.z;
+
         myCamera = GetComponent<Camera>();
         SetCameraLimits();
     }
@@ -53,7 +55,6 @@ public class SmoothFollow : MonoBehaviour
     private void LateUpdate() {
         Vector3 targetPosition = targetTransform.position;
         targetPosition.z = cameraZOffset;
-
         targetPosition.x = Mathf.Clamp(
             targetPosition.x,
             leftLimit,
@@ -86,14 +87,15 @@ public class SmoothFollow : MonoBehaviour
             smoothTime
             );
     }
-
     public void SetTarget(Transform newTargetTransform) {
         targetTransform = newTargetTransform;
     }
 
+
     private IEnumerator DoShake(float duration, float range)
     {
         while (duration > 0f) {
+
             transform.localPosition -= lastOffsetPosition;
             lastOffsetPosition = Random.insideUnitCircle * range;
             lastOffsetPosition.z = 0;
@@ -106,7 +108,7 @@ public class SmoothFollow : MonoBehaviour
             yield return null;
         }
     }
-
+    
     public void Shake(float duration, float range) {
         if (lastShakeCoroutine != null) {
             transform.localPosition -= lastOffsetPosition;
@@ -139,6 +141,7 @@ public class SmoothFollow : MonoBehaviour
 
     public void SetBottomLimit(Transform bottom) {
         bottomLimitTransform = bottom;
+        SetCameraLimits();
     }
-
+    }
 }
