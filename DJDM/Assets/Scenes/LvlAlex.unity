@@ -206,7 +206,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
 --- !u!61 &19898932
 BoxCollider2D:
@@ -754,6 +754,7 @@ MonoBehaviour:
   obstacleLayerMask:
     serializedVersion: 2
     m_Bits: 520
+  baseDamage: 10
   health: 100
 --- !u!70 &420167503
 CapsuleCollider2D:
@@ -875,7 +876,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &519420033
 MonoBehaviour:
@@ -1083,7 +1084,7 @@ RectTransform:
   - {fileID: 551106729}
   - {fileID: 1614237524}
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1741,7 +1742,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 136
   initialLife: 150
-  projectilePrefab: {fileID: 9122704688371787041, guid: d95a0d47a13fbb445950f37e776d2ee1, type: 3}
   shootPointTransform: {fileID: 1896367654}
   shootSpeed: 6
   lifebarImage: {fileID: 0}
@@ -1888,7 +1888,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1848146753
 GameObject:
@@ -1929,7 +1929,7 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1896367654}
+  - component: {fileID: 1885951560}
   m_Layer: 8
   m_Name: ShootPoint
   m_TagString: Untagged
