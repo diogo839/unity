@@ -143,5 +143,4 @@ public class SmoothFollow : MonoBehaviour
         bottomLimitTransform = bottom;
         SetCameraLimits();
     }
-    }
 }
