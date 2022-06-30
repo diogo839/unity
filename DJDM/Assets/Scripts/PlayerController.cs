@@ -98,9 +98,6 @@ public class PlayerController : MonoBehaviour {
         if (onGround) {
             jumps = 0;
         }
-        // if (jump && onGround) {
-        //     Jump();
-        // }
         if (jump) {
             if (onGround) {
                 jumps = 1;
@@ -154,7 +151,7 @@ public class PlayerController : MonoBehaviour {
     }
 
     private void UpdateLifebar () {
-        //lifebarImage.fillAmount = life / initialLife;
+        lifebarImage.fillAmount = life / initialLife;
     }
 
     public void TakeDamage (float damage) {
@@ -166,11 +163,17 @@ public class PlayerController : MonoBehaviour {
             }
 
             UpdateLifebar();
+            myAnimator.SetBool("Damage", true);
 
             if (life == 0) {
                 isAlive = false;
                 Die();
             }
+        }
+    }
+    private void OnTriggerExit2D(Collider2D collision) {
+        if (collision.CompareTag("Enemy")) {
+            myAnimator.SetBool("Damage",false);
         }
     }
 
