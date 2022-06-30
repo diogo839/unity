@@ -2,8 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyController : MonoBehaviour
-{
+public class EnemyController : MonoBehaviour {
     [SerializeField]
     private float walkSpeed = 3f;
     [SerializeField]
@@ -79,9 +78,9 @@ public class EnemyController : MonoBehaviour
         transform.localEulerAngles = targetRotation;
     }
 
-    private void OnCollisionEnter2D(Collision2D collision) {
-        if (collision.collider.CompareTag("Player")) {
-            collision.collider.GetComponent<PlayerController>().TakeDamage(baseDamage);
+    private void OnTriggerEnter2D(Collider2D collision) {
+        if (collision.CompareTag("Player")) {
+            collision.GetComponent<PlayerController>().TakeDamage(baseDamage);
         }
     }
 }

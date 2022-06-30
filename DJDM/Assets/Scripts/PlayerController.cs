@@ -117,13 +117,8 @@ public class PlayerController : MonoBehaviour
         {
             jumps = 0;
         }
-        // if (jump && onGround) {
-        //     Jump();
-        // }
-        if (jump)
-        {
-            if (onGround)
-            {
+        if (jump) {
+            if (onGround) {
                 jumps = 1;
                 myAnimator.SetFloat("HorizontalVelocity",
               Mathf.Abs(0));
@@ -190,8 +185,7 @@ public class PlayerController : MonoBehaviour
         myRigidbody.AddForce(Vector2.up * jumpForce * GameManager.Instance.JumpMultiplier());
     }
 
-    private void UpdateLifebar()
-    {
+    private void UpdateLifebar () {
         lifebarImage.fillAmount = life / initialLife;
     }
 
@@ -206,13 +200,19 @@ public class PlayerController : MonoBehaviour
                 life = 0;
             }
 
-            //UpdateLifebar();
+            UpdateLifebar();
+            myAnimator.SetBool("Damage", true);
 
             if (life == 0)
             {
                 isAlive = false;
                 Die();
             }
+        }
+    }
+    private void OnTriggerExit2D(Collider2D collision) {
+        if (collision.CompareTag("Enemy")) {
+            myAnimator.SetBool("Damage",false);
         }
     }
 
