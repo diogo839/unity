@@ -2,8 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SmoothFollow : MonoBehaviour
-{
+public class SmoothFollow : MonoBehaviour {
     public static SmoothFollow Instance { get; private set; }
 
     [SerializeField]
@@ -34,7 +33,7 @@ public class SmoothFollow : MonoBehaviour
     private Camera myCamera = null;
 
 
-    private void Awake(){
+    private void Awake() {
         if (Instance == null) {
             Instance = this;
         } else {
@@ -81,9 +80,9 @@ public class SmoothFollow : MonoBehaviour
 
         //transform.position = targetPosition;
         transform.position = Vector3.SmoothDamp(
-            transform.position, 
-            targetPosition, 
-            ref cameraVelocity, 
+            transform.position,
+            targetPosition,
+            ref cameraVelocity,
             smoothTime
             );
     }
@@ -92,15 +91,14 @@ public class SmoothFollow : MonoBehaviour
     }
 
 
-    private IEnumerator DoShake(float duration, float range)
-    {
+    private IEnumerator DoShake(float duration, float range) {
         while (duration > 0f) {
 
             transform.localPosition -= lastOffsetPosition;
             lastOffsetPosition = Random.insideUnitCircle * range;
             lastOffsetPosition.z = 0;
             transform.localPosition += lastOffsetPosition;
-            
+
             if (duration < 0.5f) {
                 range *= 0.90f;
             }
@@ -108,7 +106,7 @@ public class SmoothFollow : MonoBehaviour
             yield return null;
         }
     }
-    
+
     public void Shake(float duration, float range) {
         if (lastShakeCoroutine != null) {
             transform.localPosition -= lastOffsetPosition;
@@ -124,7 +122,7 @@ public class SmoothFollow : MonoBehaviour
         leftLimit = leftLimitTransform.position.x + halfWidth;
         rightLimit = rightLimitTransform.position.x - halfWidth;
         bottomLimit = bottomLimitTransform.position.y + halfHeight;
-        topLimit =  topLimitTransform.position.y - halfHeight;
+        topLimit = topLimitTransform.position.y - halfHeight;
     }
 
     public void SetLeftLimit(Transform left) {

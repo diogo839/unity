@@ -16,7 +16,7 @@ public class ObjectPoolingManager : MonoBehaviour {
     private List<GameObject> poolOfObjects = new List<GameObject>();
 
 
-    private void Awake () {
+    private void Awake() {
         if (Instance == null) {
             Instance = this;
         } else {
@@ -29,8 +29,8 @@ public class ObjectPoolingManager : MonoBehaviour {
             poolOfObjects.Add(newObject);
         }
     }
-    
-    public GameObject GetPooledObject () {
+
+    public GameObject GetPooledObject() {
         for (int i = 0; i < poolOfObjects.Count; i++) {
             if (!poolOfObjects[i].activeInHierarchy) {
                 return poolOfObjects[i];
@@ -46,6 +46,4 @@ public class ObjectPoolingManager : MonoBehaviour {
 
         return null;
     }
-
-
 }
