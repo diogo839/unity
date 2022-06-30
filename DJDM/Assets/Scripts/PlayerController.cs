@@ -188,6 +188,9 @@ public class PlayerController : MonoBehaviour {
     }
 
     public void TakeDamage (float damage) {
+        Debug.Log(damage);
+        Debug.Log(life);
+        Debug.Log(isAlive);
         if (isAlive) {
             life -= damage;
 
@@ -195,7 +198,7 @@ public class PlayerController : MonoBehaviour {
                 life = 0;
             }
 
-            UpdateLifebar();
+            //UpdateLifebar();
 
             if (life == 0) {
                 isAlive = false;
