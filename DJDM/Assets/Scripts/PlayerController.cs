@@ -45,8 +45,11 @@ public class PlayerController : MonoBehaviour
     private bool isAlive = true;
     private bool shoot = false;
 
-    private void Awake()
-    {
+    private bool hit = false;
+
+
+
+    private void Awake () {
         myRigidbody = GetComponent<Rigidbody2D>();
         myAnimator = GetComponent<Animator>();
         myAudioSource = GetComponent<AudioSource>();
@@ -80,8 +83,12 @@ public class PlayerController : MonoBehaviour
                 jump = SimpleInput.GetButtonDown("Jump");
             }
 
-            if (!shoot)
+            if (!hit)
             {
+                hit = SimpleInput.GetButtonDown("Fire1");
+            }
+
+            if (!shoot) {
                 shoot = SimpleInput.GetButtonDown("Shoot");
             }
 
@@ -118,6 +125,8 @@ public class PlayerController : MonoBehaviour
             if (onGround)
             {
                 jumps = 1;
+                myAnimator.SetFloat("HorizontalVelocity",
+              Mathf.Abs(0));
                 Jump();
             }
             else if (jumps < 2 && GameManager.Instance.CanDoubleJump())
@@ -125,6 +134,14 @@ public class PlayerController : MonoBehaviour
                 jumps = 2;
                 Jump();
             }
+        }
+        if (hit && !jump)
+        {
+            myAnimator.SetBool("attack", true);
+        }
+        if (!hit && !jump)
+        {
+           myAnimator.SetBool("attack", false);
         }
 
         if (shoot && GameManager.Instance.CanShoot())
@@ -134,6 +151,8 @@ public class PlayerController : MonoBehaviour
 
         jump = false;
         shoot = false;
+        hit = false;
+
     }
 
 
@@ -187,7 +206,7 @@ public class PlayerController : MonoBehaviour
                 life = 0;
             }
 
-            UpdateLifebar();
+            //UpdateLifebar();
 
             if (life == 0)
             {
