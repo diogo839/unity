@@ -11,6 +11,9 @@ public class EnemyController : MonoBehaviour
     [SerializeField]
     private LayerMask obstacleLayerMask = 0;
 
+    [SerializeField]
+    private float baseDamage = 10f;
+
     private Rigidbody2D myRigidbody = null;
     private Animator myAnimator = null;
 
@@ -74,5 +77,11 @@ public class EnemyController : MonoBehaviour
         Vector3 targetRotation = transform.localEulerAngles;
         targetRotation.y += 180f;
         transform.localEulerAngles = targetRotation;
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision) {
+        if (collision.collider.CompareTag("Player")) {
+            collision.collider.GetComponent<PlayerController>().TakeDamage(baseDamage);
+        }
     }
 }
