@@ -17,7 +17,7 @@ MonoBehaviour:
     x: 2249
     y: 302.5
     width: 1206
-    height: 715
+    height: 679
   m_ShowMode: 4
   m_Title:
   m_RootView: {fileID: 6}
@@ -296,7 +296,7 @@ MonoBehaviour:
     x: 2249
     y: 726.5
     width: 920
-    height: 250
+    height: 235
   m_ViewDataDictionary: {fileID: 0}
   m_SearchFilter:
     m_NameFilter:
@@ -432,7 +432,7 @@ MonoBehaviour:
     x: 3170
     y: 332.5
     width: 284
-    height: 644
+    height: 608
   m_ViewDataDictionary: {fileID: 0}
   m_ObjectsLockedBeforeSerialization: []
   m_InstanceIDsLockedBeforeSerialization:
@@ -470,7 +470,7 @@ MonoBehaviour:
     x: 2249
     y: 332.5
     width: 227
-    height: 373
+    height: 352
   m_ViewDataDictionary: {fileID: 0}
   m_SceneHierarchy:
     m_TreeViewState:
@@ -524,7 +524,7 @@ MonoBehaviour:
     x: 2477
     y: 332.5
     width: 691
-    height: 373
+    height: 352
   m_ViewDataDictionary: {fileID: 0}
   m_ShowContextualTools: 0
   m_WindowGUID: cc27987af1a868c49b0894db9c0f5429
