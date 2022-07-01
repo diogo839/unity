@@ -211,7 +211,7 @@ public class PlayerController : MonoBehaviour
         }
     }
     private void OnTriggerExit2D(Collider2D collision) {
-        if (collision.CompareTag("Enemy")) {
+        if (collision.CompareTag("Enemy") || collision.CompareTag("Spikes")) {
             myAnimator.SetBool("Damage",false);
         }
     }
