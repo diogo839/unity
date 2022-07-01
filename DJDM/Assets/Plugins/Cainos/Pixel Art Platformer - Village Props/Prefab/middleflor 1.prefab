@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3064738676209053313}
   - component: {fileID: 1349130754360778460}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: TX Tileset Ground_1 (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 1618679184826132139}
   - component: {fileID: 5592259541298360225}
   - component: {fileID: 8522133100886563221}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: middleflor 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -175,7 +175,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3859635709077234570}
   - component: {fileID: 4159098753777466186}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: TX Tileset Ground_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -259,7 +259,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7384141844331208027}
   - component: {fileID: 8301860862576367}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: TX Tileset Ground_1 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
