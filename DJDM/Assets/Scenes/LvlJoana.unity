@@ -5998,7 +5998,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 192
   initialLife: 150
-  projectilePrefab: {fileID: 0}
   shootPointTransform: {fileID: 0}
   shootSpeed: 6
   lifebarImage: {fileID: 0}
@@ -7742,7 +7741,8 @@ GameObject:
   - component: {fileID: 1274525384}
   - component: {fileID: 1274525383}
   - component: {fileID: 1274525385}
-  m_Layer: 0
+  - component: {fileID: 1274525386}
+  m_Layer: 3
   m_Name: window
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7842,6 +7842,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.32, y: 0.64}
   m_EdgeRadius: 0
+--- !u!114 &1274525386
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1274525382}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04865b50e4ec47c49b6d17d4a4732d58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1278904749
 GameObject:
   m_ObjectHideFlags: 0
@@ -10357,7 +10369,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 200
   initialLife: 150
-  projectilePrefab: {fileID: 0}
   shootPointTransform: {fileID: 0}
   shootSpeed: 6
   lifebarImage: {fileID: 0}
