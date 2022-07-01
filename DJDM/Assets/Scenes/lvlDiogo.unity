@@ -362,9 +362,9 @@ GameObject:
   - component: {fileID: 123898136}
   - component: {fileID: 123898135}
   - component: {fileID: 123898140}
-  m_Layer: 6
+  m_Layer: 8
   m_Name: player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -656,6 +656,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04865b50e4ec47c49b6d17d4a4732d58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!70 &190294906
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 190294904}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.24408913, y: 0.21696901}
+  m_Size: {x: 0.5354576, y: 2.378562}
+  m_Direction: 0
 --- !u!1 &253052770
 GameObject:
   m_ObjectHideFlags: 0

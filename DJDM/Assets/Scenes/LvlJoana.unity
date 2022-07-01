@@ -2167,7 +2167,6 @@ GameObject:
   m_Component:
   - component: {fileID: 321791463}
   - component: {fileID: 321791465}
-  - component: {fileID: 321791464}
   m_Layer: 3
   m_Name: stairs-wall
   m_TagString: Untagged
@@ -2190,32 +2189,6 @@ Transform:
   m_Father: {fileID: 1957691668}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!61 &321791464
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 321791462}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.05604794}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.16, y: 0.32}
-    newSize: {x: 0.16, y: 0.32}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.16, y: 0.20790412}
-  m_EdgeRadius: 0
 --- !u!212 &321791465
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2513,7 +2486,6 @@ GameObject:
   m_Component:
   - component: {fileID: 352635289}
   - component: {fileID: 352635291}
-  - component: {fileID: 352635290}
   m_Layer: 3
   m_Name: stairs-wall (5)
   m_TagString: Untagged
@@ -2536,32 +2508,6 @@ Transform:
   m_Father: {fileID: 1957691668}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!61 &352635290
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 352635288}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.053525798}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.16, y: 0.32}
-    newSize: {x: 0.16, y: 0.32}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.16, y: 0.2129484}
-  m_EdgeRadius: 0
 --- !u!212 &352635291
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -5118,7 +5064,6 @@ GameObject:
   m_Component:
   - component: {fileID: 838394801}
   - component: {fileID: 838394803}
-  - component: {fileID: 838394802}
   m_Layer: 3
   m_Name: stairs-wall (3)
   m_TagString: Untagged
@@ -5141,32 +5086,6 @@ Transform:
   m_Father: {fileID: 1957691668}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!61 &838394802
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 838394800}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.050632507}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.16, y: 0.32}
-    newSize: {x: 0.16, y: 0.32}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.16, y: 0.21873498}
-  m_EdgeRadius: 0
 --- !u!212 &838394803
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -7275,7 +7194,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1161090054}
   - component: {fileID: 1161090056}
-  - component: {fileID: 1161090055}
   m_Layer: 3
   m_Name: stairs-wall (2)
   m_TagString: Untagged
@@ -7298,32 +7216,6 @@ Transform:
   m_Father: {fileID: 1957691668}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!61 &1161090055
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1161090053}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.057562754}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.16, y: 0.32}
-    newSize: {x: 0.16, y: 0.32}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.16, y: 0.20487449}
-  m_EdgeRadius: 0
 --- !u!212 &1161090056
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -10404,7 +10296,7 @@ CapsuleCollider2D:
   m_GameObject: {fileID: 1662450127}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: cba59ae3e01a642d2bd38893da54d665, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -10594,7 +10486,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1706930513}
   - component: {fileID: 1706930515}
-  - component: {fileID: 1706930514}
   m_Layer: 3
   m_Name: stairs-right
   m_TagString: Untagged
@@ -10617,32 +10508,6 @@ Transform:
   m_Father: {fileID: 1957691668}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!61 &1706930514
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1706930512}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.05756277}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.16, y: 0.32}
-    newSize: {x: 0.16, y: 0.32}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.16, y: 0.20487446}
-  m_EdgeRadius: 0
 --- !u!212 &1706930515
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -10683,7 +10548,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: d9f50f119881d4482b730509af83ef67, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -11518,7 +11383,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1800522416}
   - component: {fileID: 1800522418}
-  - component: {fileID: 1800522417}
   m_Layer: 3
   m_Name: stairs-wall (4)
   m_TagString: Untagged
@@ -11541,32 +11405,6 @@ Transform:
   m_Father: {fileID: 1957691668}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!61 &1800522417
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1800522415}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.053525776}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.16, y: 0.32}
-    newSize: {x: 0.16, y: 0.32}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.16, y: 0.21294844}
-  m_EdgeRadius: 0
 --- !u!212 &1800522418
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -12722,7 +12560,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1957691668}
-  m_Layer: 0
+  - component: {fileID: 1957691669}
+  m_Layer: 3
   m_Name: Stairs
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12751,6 +12590,37 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 30
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!60 &1957691669
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1957691667}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 1.0983124, y: 0.29067492}
+      - {x: -1.3197813, y: -2.2944796}
+      - {x: -1.6129127, y: -2.7838974}
+      - {x: 0.5649048, y: -0.7403729}
+      - {x: 1.7451591, y: 0.46064806}
+      - {x: 1.6374998, y: 0.8810533}
 --- !u!1 &1972943713
 GameObject:
   m_ObjectHideFlags: 0
@@ -12949,7 +12819,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1984924979}
   - component: {fileID: 1984924981}
-  - component: {fileID: 1984924980}
   m_Layer: 3
   m_Name: stairs-wall (1)
   m_TagString: Untagged
@@ -12972,32 +12841,6 @@ Transform:
   m_Father: {fileID: 1957691668}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!61 &1984924980
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1984924978}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.051503483}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.16, y: 0.32}
-    newSize: {x: 0.16, y: 0.32}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.16, y: 0.21699303}
-  m_EdgeRadius: 0
 --- !u!212 &1984924981
 SpriteRenderer:
   m_ObjectHideFlags: 0
