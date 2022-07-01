@@ -120,8 +120,6 @@ public class PlayerController : MonoBehaviour
         if (jump) {
             if (onGround) {
                 jumps = 1;
-                myAnimator.SetFloat("HorizontalVelocity",
-              Mathf.Abs(0));
                 Jump();
             }
             else if (jumps < 2 && GameManager.Instance.CanDoubleJump())
