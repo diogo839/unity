@@ -96,15 +96,6 @@ public class PlayerController : MonoBehaviour
                 myRigidbody.velocity.y);
             myAnimator.SetFloat("HorizontalVelocity",
                 Mathf.Abs(myRigidbody.velocity.x));
-
-            /*
-            * DEBUG
-            */
-
-            if (Input.GetKeyDown(KeyCode.K))
-            {
-                TakeDamage(25f);
-            }
         }
     }
 
