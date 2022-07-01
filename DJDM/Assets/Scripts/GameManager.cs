@@ -4,8 +4,7 @@ using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 using UnityEngine;
 
-public class GameManager : MonoBehaviour
-{
+public class GameManager : MonoBehaviour {
     public static GameManager Instance { get; private set; } = null;
     public bool IsPaused { get; private set; } = false;
 
@@ -49,6 +48,7 @@ public class GameManager : MonoBehaviour
     }
 
     public void UnlockDoubleJump() {
+        print("xisdê");
         upgrades[JUMP_UPGRADE] = 1f;
     }
 
@@ -57,6 +57,7 @@ public class GameManager : MonoBehaviour
     }
 
     public void UnlockShoot() {
+        print("xisdê xute");
         upgrades[SHOOT_UPGRADE] = 1f;
     }
 
@@ -92,6 +93,17 @@ public class GameManager : MonoBehaviour
     public void LoadNextLevel() {
         if (level + 1 < SceneManager.sceneCountInBuildSettings) {
             StartCoroutine(LoadNextLevelAsync(++level));
+            switch (level) {
+                case 2:
+                    UnlockDoubleJump();
+                    break;
+                case 3:
+                    UnlockShoot();
+                    UnlockDoubleJump();
+                    break;
+                default:
+                    break;
+            }
             UIManager.Instance.ShowHUD(true);
         } else {
             print("End Game!");

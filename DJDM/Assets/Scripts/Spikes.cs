@@ -8,7 +8,6 @@ public class Spikes : MonoBehaviour
     private float damage = 25f;
 
     private void OnTriggerEnter2D (Collider2D other) {
-        Debug.Log(other.tag);
         if (other.CompareTag("Player")) {
             other.GetComponent<PlayerController>().
                 TakeDamage(damage);
