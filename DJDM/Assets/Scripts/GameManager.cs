@@ -160,3 +160,5 @@ public class GameManager : MonoBehaviour {
         UIManager.Instance.ShowPanelPause(pause);
     }
 }
+
+

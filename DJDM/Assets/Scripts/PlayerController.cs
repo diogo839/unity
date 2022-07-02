@@ -14,13 +14,17 @@ public class PlayerController : MonoBehaviour {
     [SerializeField]
     private LayerMask groundLayerMask = 128;
     [SerializeField]
+    private LayerMask hitLayerMask = 128;
+    [SerializeField]
     private float initialLife = 150f;
     [Header("Shoot")]
     [SerializeField]
     private Transform shootPointTransform = null;
     [SerializeField]
+    private Transform hitPointTransform = null;
+    [SerializeField]
     private float shootSpeed = 6f;
-
+    
     [Header("UI")]
     [SerializeField]
     private Image lifebarImage = null;
@@ -30,7 +34,6 @@ public class PlayerController : MonoBehaviour {
     private AudioClip jumpAudioClip;
     [SerializeField]
     private AudioClip[] shootAudioClips;
-
     private AudioSource myAudioSource;
     private Rigidbody2D myRigidbody = null;
     public Animator myAnimator = null;
@@ -39,6 +42,7 @@ public class PlayerController : MonoBehaviour {
 
     private bool jump = false;
     private Collider2D[] groundCheckColliders = new Collider2D[1];
+    private Collider2D[] hitCheckCollider = new Collider2D[1];
     private bool onGround = false;
 
     private float life = 100f;
@@ -112,11 +116,10 @@ public class PlayerController : MonoBehaviour {
                 myAnimator.SetBool("DoubleJump", true);
             }
         }
-        if (hit && !jump) {
-            myAnimator.SetBool("attack", true);
-        }
-        if (!hit && !jump) {
-            myAnimator.SetBool("attack", false);
+        if (hit && !jump)
+        {
+            myAnimator.SetTrigger("Attack2");
+            GetComponentInChildren<HitPoint>().attacking = true;
         }
 
         if (shoot && GameManager.Instance.CanShoot()) {
@@ -126,9 +129,7 @@ public class PlayerController : MonoBehaviour {
         jump = false;
         shoot = false;
         hit = false;
-
     }
-
 
     private bool CheckForFlip() {
         return (transform.right.x > 0 && moveDirection < 0) ||

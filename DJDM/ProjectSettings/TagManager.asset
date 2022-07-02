@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Enemy
   - Spikes
+  - chest
   - Boss
   layers:
   - Default
@@ -23,6 +24,7 @@ TagManager:
   - Spikes
   - Range
   - Collectibles
+  - chest
   - 
   - 
   - 
