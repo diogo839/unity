@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PlayerController : MonoBehaviour
-{
+public class PlayerController : MonoBehaviour {
+
     [SerializeField]
     private float walkSpeed = 3f;
     [SerializeField]
@@ -36,7 +36,7 @@ public class PlayerController : MonoBehaviour
     private AudioClip[] shootAudioClips;
     private AudioSource myAudioSource;
     private Rigidbody2D myRigidbody = null;
-    private Animator myAnimator = null;
+    public Animator myAnimator = null;
 
     private float moveDirection = 0f;
 
@@ -48,12 +48,13 @@ public class PlayerController : MonoBehaviour
     private float life = 100f;
     private bool isAlive = true;
     private bool shoot = false;
+    public bool hasKey;
 
     private bool hit = false;
 
 
 
-    private void Awake () {
+    private void Awake() {
         myRigidbody = GetComponent<Rigidbody2D>();
         myAnimator = GetComponent<Animator>();
         myAudioSource = GetComponent<AudioSource>();
@@ -61,34 +62,27 @@ public class PlayerController : MonoBehaviour
         life = initialLife;
     }
 
-    private void Start()
-    {
+    private void Start() {
         UpdateLifebar();
     }
 
-    private void Update()
-    {
-        if (GameManager.Instance.IsPaused)
-        {
+    private void Update() {
+        if (GameManager.Instance.IsPaused) {
             return;
         }
 
-        if (isAlive)
-        {
+        if (isAlive) {
             moveDirection = SimpleInput.GetAxis("Horizontal");
 
-            if (CheckForFlip())
-            {
+            if (CheckForFlip()) {
                 Flip();
             }
 
-            if (!jump)
-            {
+            if (!jump) {
                 jump = SimpleInput.GetButtonDown("Jump");
             }
 
-            if (!hit)
-            {
+            if (!hit) {
                 hit = SimpleInput.GetButtonDown("Fire1");
             }
 
@@ -104,120 +98,86 @@ public class PlayerController : MonoBehaviour
     }
 
     private int jumps = 0;
-    private void FixedUpdate()
-    {
+    private void FixedUpdate() {
 
         onGround = CheckForGround();
-
-        if (onGround)
-        {
+        if (onGround) {
             jumps = 0;
+            myAnimator.SetBool("Jump", false);
+            myAnimator.SetBool("DoubleJump", false);
         }
         if (jump) {
             if (onGround) {
                 jumps = 1;
                 Jump();
-            }
-            else if (jumps < 2 && GameManager.Instance.CanDoubleJump())
-            {
+            } else if (jumps < 2 && GameManager.Instance.CanDoubleJump()) {
                 jumps = 2;
                 Jump();
+                myAnimator.SetBool("DoubleJump", true);
             }
         }
         if (hit && !jump)
         {
             myAnimator.SetTrigger("Attack2");
             GetComponentInChildren<HitPoint>().attacking = true;
-
-        }
-        if (!hit && !jump)
-        {
-            //myAnimator.SetBool("attack", false);
-        }
-        if(CheckForHit() && hit)
-        {
-
         }
 
-        if (shoot && GameManager.Instance.CanShoot())
-        {
+        if (shoot && GameManager.Instance.CanShoot()) {
             Shoot();
         }
 
         jump = false;
         shoot = false;
         hit = false;
-
     }
 
-    private bool CheckForHit()
-    {
-        
-            if (Physics2D.OverlapPointNonAlloc(
-                hitPointTransform.position,
-                hitCheckCollider,
-                hitLayerMask) > 0)
-            {
-                return true;
-            }
-        
-        return false;
-    }
-
-    private bool CheckForFlip () {
+    private bool CheckForFlip() {
         return (transform.right.x > 0 && moveDirection < 0) ||
             (transform.right.x < 0 && moveDirection > 0);
     }
 
-    private bool CheckForGround () {
+    private bool CheckForGround() {
         for (int i = 0; i < feetTransform.Length; i++) {
             if (Physics2D.OverlapPointNonAlloc(
                 feetTransform[i].position,
                 groundCheckColliders,
-                groundLayerMask) > 0)
-            {
+                groundLayerMask) > 0) {
                 return true;
             }
         }
         return false;
     }
-
-
-    private void Flip () {
+    private void Flip() {
         Vector3 targetRotation = transform.localEulerAngles;
         targetRotation.y += 180f;
         transform.localEulerAngles = targetRotation;
     }
-    
-    private void Jump () {
+    private void Jump() {
         //play jump audio
         //myAudioSource.PlayOneShot(jumpAudioClip);
 
         myRigidbody.velocity = new Vector2(
             myRigidbody.velocity.x, 0);
         myRigidbody.AddForce(Vector2.up * jumpForce * GameManager.Instance.JumpMultiplier());
+        myAnimator.SetBool("Jump", true);
     }
 
-    private void UpdateLifebar () {
+    private void UpdateLifebar() {
         lifebarImage.fillAmount = life / initialLife;
     }
 
-    public void TakeDamage(float damage)
-    {
-        if (isAlive)
-        {
+    public void TakeDamage(float damage) {
+        if (isAlive) {
             life -= damage;
 
-            if (life < 0)
-            {
+            if (life < 0) {
                 life = 0;
             }
 
             UpdateLifebar();
             myAnimator.SetBool("Damage", true);
 
-            if (life == 0)
-            {
+            if (life == 0) {
                 isAlive = false;
                 Die();
             }
@@ -225,17 +185,17 @@ public class PlayerController : MonoBehaviour
     }
     private void OnTriggerExit2D(Collider2D collision) {
         if (collision.CompareTag("Enemy") || collision.CompareTag("Spikes")) {
-            myAnimator.SetBool("Damage",false);
+            myAnimator.SetBool("Damage", false);
+        } else if (collision.gameObject.layer == LayerMask.NameToLayer("Hadouken")) {
+            StartCoroutine("Wait");
         }
     }
 
-        private void Die()
-    {
+    public void Die() {
         Destroy(gameObject);
     }
 
-    private void Shoot()
-    {
+    private void Shoot() {
         //GameObject brick = Instantiate(projectilePrefab);
         GameObject brick = ObjectPoolingManager.Instance.GetPooledObject();
         brick.transform.position = shootPointTransform.position;
@@ -246,5 +206,9 @@ public class PlayerController : MonoBehaviour
 
         //play shoot audio
         //myAudioSource.PlayOneShot(shootAudioClips[Random.Range(0, shootAudioClips.Length)]);
+    }
+    IEnumerator Wait() {
+        yield return new WaitForSeconds(0.5f);
+        myAnimator.SetBool("Damage", false);
     }
 }

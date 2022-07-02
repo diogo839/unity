@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour {
     private Dictionary<string, float> upgrades = new Dictionary<string, float>();
 
     public float baseDamage = 10f;
+    public float bossBaseDamage = 20f;
 
     //[SerializeField]
     //public TMP_Text gameScoreText = null;
@@ -48,7 +49,6 @@ public class GameManager : MonoBehaviour {
     }
 
     public void UnlockDoubleJump() {
-        print("xisd?");
         upgrades[JUMP_UPGRADE] = 1f;
     }
 
@@ -57,7 +57,6 @@ public class GameManager : MonoBehaviour {
     }
 
     public void UnlockShoot() {
-        print("xisd? xute");
         upgrades[SHOOT_UPGRADE] = 1f;
     }
 
