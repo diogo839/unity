@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Enemy
   - Spikes
+  - Boss
   layers:
   - Default
   - TransparentFX
@@ -20,7 +21,7 @@ TagManager:
   - Enemy
   - Enemy Turn
   - Spikes
-  - 
+  - Range
   - 
   - 
   - 
