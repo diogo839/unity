@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour {
     private Dictionary<string, float> upgrades = new Dictionary<string, float>();
 
     public float baseDamage = 10f;
+    public float bossBaseDamage = 20f;
 
     //[SerializeField]
     //public TMP_Text gameScoreText = null;
@@ -36,8 +37,8 @@ public class GameManager : MonoBehaviour {
     }
 
     private void Start() {
-        upgrades.Add(JUMP_UPGRADE, 0f); //Starts false, no double jump
-        upgrades.Add(SHOOT_UPGRADE, 0f); //Starts false, no shoot
+        upgrades.Add(JUMP_UPGRADE, 1f); //Starts false, no double jump
+        upgrades.Add(SHOOT_UPGRADE, 1f); //Starts false, no shoot
         upgrades.Add(DAMAGE_BOOST_UPGRADE, 1f);
         upgrades.Add(SPEED_BOOST_UPGRADE, 1f);
         upgrades.Add(JUMP_BOOST_UPGRADE, 1f);
@@ -48,7 +49,6 @@ public class GameManager : MonoBehaviour {
     }
 
     public void UnlockDoubleJump() {
-        print("xisdê");
         upgrades[JUMP_UPGRADE] = 1f;
     }
 
@@ -57,7 +57,6 @@ public class GameManager : MonoBehaviour {
     }
 
     public void UnlockShoot() {
-        print("xisdê xute");
         upgrades[SHOOT_UPGRADE] = 1f;
     }
 
