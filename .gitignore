@@ -10,6 +10,7 @@ DJDM/[Bb]uilds/
 DJDM/[Ll]ogs/
 DJDM/[Mm]emoryCaptures/
 DJDM/[Uu]ser[Ss]ettings/
+DJDM/ProjectSettings/ProjectVersion.txt
 
 # Asset meta data should only be ignored when the corresponding asset is also ignored
 !/[Aa]ssets/**/*.meta
