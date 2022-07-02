@@ -5,7 +5,7 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     private void OnTriggerEnter2D(Collider2D other) {
-        if (other.CompareTag("Wall") || other.CompareTag("Platform")) {
+        if (other.gameObject.layer.Equals("Wall") || other.gameObject.layer.Equals("Ground")) {
             Dismiss();
         }
         if (other.CompareTag("Enemy")) {

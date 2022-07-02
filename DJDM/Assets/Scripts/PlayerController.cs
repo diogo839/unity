@@ -46,8 +46,11 @@ public class PlayerController : MonoBehaviour
     private bool shoot = false;
     public bool hasKey;
 
-    private void Awake()
-    {
+    private bool hit = false;
+
+
+
+    private void Awake () {
         myRigidbody = GetComponent<Rigidbody2D>();
         myAnimator = GetComponent<Animator>();
         myAudioSource = GetComponent<AudioSource>();
@@ -81,8 +84,12 @@ public class PlayerController : MonoBehaviour
                 jump = SimpleInput.GetButtonDown("Jump");
             }
 
-            if (!shoot)
+            if (!hit)
             {
+                hit = SimpleInput.GetButtonDown("Fire1");
+            }
+
+            if (!shoot) {
                 shoot = SimpleInput.GetButtonDown("Shoot");
             }
 
@@ -90,15 +97,6 @@ public class PlayerController : MonoBehaviour
                 myRigidbody.velocity.y);
             myAnimator.SetFloat("HorizontalVelocity",
                 Mathf.Abs(myRigidbody.velocity.x));
-
-            /*
-            * DEBUG
-            */
-
-            if (Input.GetKeyDown(KeyCode.K))
-            {
-                TakeDamage(25f);
-            }
         }
     }
 
@@ -111,13 +109,8 @@ public class PlayerController : MonoBehaviour
         {
             jumps = 0;
         }
-        // if (jump && onGround) {
-        //     Jump();
-        // }
-        if (jump)
-        {
-            if (onGround)
-            {
+        if (jump) {
+            if (onGround) {
                 jumps = 1;
                 Jump();
             }
@@ -127,6 +120,14 @@ public class PlayerController : MonoBehaviour
                 Jump();
             }
         }
+        if (hit && !jump)
+        {
+            myAnimator.SetBool("attack", true);
+        }
+        if (!hit && !jump)
+        {
+           myAnimator.SetBool("attack", false);
+        }
 
         if (shoot && GameManager.Instance.CanShoot())
         {
@@ -135,6 +136,8 @@ public class PlayerController : MonoBehaviour
 
         jump = false;
         shoot = false;
+        hit = false;
+
     }
 
 
@@ -172,8 +175,7 @@ public class PlayerController : MonoBehaviour
         myRigidbody.AddForce(Vector2.up * jumpForce * GameManager.Instance.JumpMultiplier());
     }
 
-    private void UpdateLifebar()
-    {
+    private void UpdateLifebar () {
         lifebarImage.fillAmount = life / initialLife;
     }
 
@@ -189,12 +191,18 @@ public class PlayerController : MonoBehaviour
             }
 
             UpdateLifebar();
+            myAnimator.SetBool("Damage", true);
 
             if (life == 0)
             {
                 isAlive = false;
                 Die();
             }
+        }
+    }
+    private void OnTriggerExit2D(Collider2D collision) {
+        if (collision.CompareTag("Enemy") || collision.CompareTag("Spikes")) {
+            myAnimator.SetBool("Damage",false);
         }
     }
 
