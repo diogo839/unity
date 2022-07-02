@@ -48,7 +48,7 @@ public class GameManager : MonoBehaviour {
     }
 
     public void UnlockDoubleJump() {
-        print("xisdê");
+        print("xisd?");
         upgrades[JUMP_UPGRADE] = 1f;
     }
 
@@ -57,7 +57,7 @@ public class GameManager : MonoBehaviour {
     }
 
     public void UnlockShoot() {
-        print("xisdê xute");
+        print("xisd? xute");
         upgrades[SHOOT_UPGRADE] = 1f;
     }
 
@@ -161,3 +161,5 @@ public class GameManager : MonoBehaviour {
         UIManager.Instance.ShowPanelPause(pause);
     }
 }
+
+
