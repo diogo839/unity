@@ -37,8 +37,8 @@ public class GameManager : MonoBehaviour {
     }
 
     private void Start() {
-        upgrades.Add(JUMP_UPGRADE, 1f); //Starts false, no double jump
-        upgrades.Add(SHOOT_UPGRADE, 1f); //Starts false, no shoot
+        upgrades.Add(JUMP_UPGRADE, 0f); //Starts false, no double jump
+        upgrades.Add(SHOOT_UPGRADE, 0f); //Starts false, no shoot
         upgrades.Add(DAMAGE_BOOST_UPGRADE, 1f);
         upgrades.Add(SPEED_BOOST_UPGRADE, 1f);
         upgrades.Add(JUMP_BOOST_UPGRADE, 1f);

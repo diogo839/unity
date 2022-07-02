@@ -422,6 +422,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   baseDamage: 10
+  bossBaseDamage: 20
 --- !u!4 &61119882
 Transform:
   m_ObjectHideFlags: 0
@@ -4757,7 +4758,7 @@ GameObject:
   - component: {fileID: 372840666}
   - component: {fileID: 372840665}
   - component: {fileID: 372840668}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Lava
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7348,7 +7349,7 @@ GameObject:
   - component: {fileID: 590726341}
   - component: {fileID: 590726340}
   - component: {fileID: 590726339}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Lava (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12227,6 +12228,7 @@ MonoBehaviour:
   lifebarImage: {fileID: 0}
   jumpAudioClip: {fileID: 0}
   shootAudioClips: []
+  myAnimator: {fileID: 0}
   hasKey: 0
 --- !u!70 &1010313296
 CapsuleCollider2D:
@@ -14935,7 +14937,7 @@ GameObject:
   - component: {fileID: 1136170723}
   - component: {fileID: 1136170722}
   - component: {fileID: 1136170721}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Lava (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15772,7 +15774,7 @@ GameObject:
   - component: {fileID: 1178401648}
   - component: {fileID: 1178401647}
   - component: {fileID: 1178401646}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Lava (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16681,7 +16683,7 @@ GameObject:
   - component: {fileID: 1276928330}
   - component: {fileID: 1276928329}
   - component: {fileID: 1276928328}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Lava (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -22455,7 +22457,7 @@ GameObject:
   - component: {fileID: 1652482659}
   - component: {fileID: 1652482658}
   - component: {fileID: 1652482657}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Lava (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -22623,6 +22625,7 @@ MonoBehaviour:
   lifebarImage: {fileID: 0}
   jumpAudioClip: {fileID: 0}
   shootAudioClips: []
+  myAnimator: {fileID: 0}
   hasKey: 0
 --- !u!50 &1662450129
 Rigidbody2D:
