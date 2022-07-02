@@ -44,6 +44,7 @@ public class PlayerController : MonoBehaviour {
     private float life = 100f;
     private bool isAlive = true;
     private bool shoot = false;
+    public bool hasKey;
 
     private bool hit = false;
 
@@ -89,14 +90,6 @@ public class PlayerController : MonoBehaviour {
                 myRigidbody.velocity.y);
             myAnimator.SetFloat("HorizontalVelocity",
                 Mathf.Abs(myRigidbody.velocity.x));
-
-            /*
-            * DEBUG
-            */
-
-            if (Input.GetKeyDown(KeyCode.K)) {
-                TakeDamage(25f);
-            }
         }
     }
 

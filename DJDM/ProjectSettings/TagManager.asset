@@ -22,7 +22,7 @@ TagManager:
   - Enemy Turn
   - Spikes
   - Range
-  - 
+  - Collectibles
   - 
   - 
   - 
@@ -41,9 +41,6 @@ TagManager:
   - 
   - 
   m_SortingLayers:
-  - name: Background
-    uniqueID: 926392201
-    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
