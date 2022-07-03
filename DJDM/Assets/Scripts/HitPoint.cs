@@ -19,14 +19,14 @@ public class HitPoint : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
+        print(attacking);
         if (collision.CompareTag("Enemy") && animator.GetCurrentAnimatorStateInfo(0).tagHash == attackHashAnimation && attacking)
         {
             collision.GetComponent<EnemyController>().TakeDamage();
             attacking = false;
         }
-        else if (collision.CompareTag("chest") && animator.GetCurrentAnimatorStateInfo(0).tagHash == attackHashAnimation && attacking)
-        {
-
+        else if (collision.CompareTag("chest") && animator.GetCurrentAnimatorStateInfo(0).tagHash == attackHashAnimation && attacking) { 
+        
             collision.GetComponent<UpgradesController>().OpenChest();
             attacking = false;
         }
