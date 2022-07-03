@@ -7,11 +7,16 @@ public class BossController : MonoBehaviour {
     private float health = 1000f;
     [SerializeField]
     private Transform shootPointTransform = null;
+    [SerializeField]
+    private float shootSpeed = 2f;
+    [SerializeField]
+    private float chargeAttackSpeed = 5f;
+    [SerializeField]
+    private float attackSpeed = 2f;
 
     private Rigidbody2D rb = null;
     private Animator anim = null;
 
-    private float shootSpeed = 2f;
     private float currentWalkSpeed = 0;
     private bool playerIn = false;
     private GameObject player = null;
@@ -60,14 +65,16 @@ public class BossController : MonoBehaviour {
             currentWalkSpeed = 1f;
             player = collision.gameObject;
             playerIn = true;
-            StartCoroutine("WaitAndShoot");
-
+            InvokeRepeating(nameof(Shoot), chargeAttackSpeed, chargeAttackSpeed);
+            InvokeRepeating(nameof(Shoot), attackSpeed, attackSpeed);
+            Camera.main.orthographicSize = 5;
         }
     }
     private void OnTriggerExit2D(Collider2D collision) {
         if (collision.CompareTag("Player")) {
             currentWalkSpeed = 0f;
             playerIn = false;
+            Camera.main.orthographicSize = 3;
         }
     }
 
@@ -79,14 +86,9 @@ public class BossController : MonoBehaviour {
         brick.SetActive(true);
         brick.GetComponent<Rigidbody2D>().velocity =
             shootPointTransform.right * shootSpeed;
-        StartCoroutine("WaitAndShoot");
 
         //play shoot audio
         //myAudioSource.PlayOneShot(shootAudioClips[Random.Range(0, shootAudioClips.Length)]);
-    }
-    IEnumerator WaitAndShoot() {
-        yield return new WaitForSeconds(shootSpeed);
-        Shoot();
     }
     IEnumerator WaitToDie() {
         anim.SetTrigger("Die");
