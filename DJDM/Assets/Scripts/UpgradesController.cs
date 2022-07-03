@@ -6,29 +6,29 @@ public class UpgradesController : MonoBehaviour {
     private Animator myAnimator = null;
     [SerializeField]
     private string type = null;
-
-    private bool flag = false;
+    private bool opened = false;
 
     private void Awake() {
         myAnimator = GetComponent<Animator>();
     }
 
     public void OpenChest() {
-        Debug.Log(GameManager.Instance.DamageMultiplier());
-        if (!myAnimator.GetBool("open")) {
+        if (!myAnimator.GetBool("open") && !opened) {
             myAnimator.SetBool("open", true);
 
             GameManager.Instance.Upgrade(type);
+            Debug.Log(GameManager.Instance.DamageMultiplier());
 
+            opened = true;
         }
 
     }
 
     private void OnTriggerEnter2D(Collider2D collision) {
-        if (collision.CompareTag("Player") && !flag) {
+        if (collision.CompareTag("Player") && !opened) {
             myAnimator.SetTrigger("Open");
             GameManager.Instance.Upgrade(type);
-            flag = true;
+            opened = true;
         }
     }
 }

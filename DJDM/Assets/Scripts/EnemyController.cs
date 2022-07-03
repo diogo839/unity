@@ -69,9 +69,7 @@ public class EnemyController : MonoBehaviour {
     }
 
     public void TakeDamage() {
-        Debug.Log(health);
         health -= GameManager.Instance.baseDamage * GameManager.Instance.DamageMultiplier();
-        Debug.Log(health);
     }
 
     private void Flip() {

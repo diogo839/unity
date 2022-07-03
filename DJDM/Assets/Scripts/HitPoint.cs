@@ -18,9 +18,7 @@ public class HitPoint : MonoBehaviour
     }
 
     private void OnTriggerStay2D(Collider2D collision)
-
     {
-        Debug.Log(animator.GetCurrentAnimatorStateInfo(0).tagHash);
         if (collision.CompareTag("Enemy") && animator.GetCurrentAnimatorStateInfo(0).tagHash == attackHashAnimation && attacking)
         {
             collision.GetComponent<EnemyController>().TakeDamage();
