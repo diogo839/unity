@@ -2404,6 +2404,10 @@ MonoBehaviour:
   bottomLimitTransform: {fileID: 902958839}
   leftLimitTransform: {fileID: 1522902303}
   rightLimitTransform: {fileID: 1758836049}
+  bossTopLimitTransform: {fileID: 0}
+  bossBottomLimitTransform: {fileID: 0}
+  bossLeftLimitTransform: {fileID: 0}
+  bossRightLimitTransform: {fileID: 0}
 --- !u!1001 &952847485
 PrefabInstance:
   m_ObjectHideFlags: 0

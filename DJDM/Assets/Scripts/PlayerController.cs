@@ -116,8 +116,7 @@ public class PlayerController : MonoBehaviour {
                 myAnimator.SetBool("DoubleJump", true);
             }
         }
-        if (hit && !jump)
-        {
+        if (hit && !jump) {
             myAnimator.SetTrigger("Attack2");
             GetComponentInChildren<HitPoint>().attacking = true;
         }
@@ -203,7 +202,6 @@ public class PlayerController : MonoBehaviour {
         brick.SetActive(true);
         brick.GetComponent<Rigidbody2D>().velocity =
             shootPointTransform.right * shootSpeed;
-
         //play shoot audio
         //myAudioSource.PlayOneShot(shootAudioClips[Random.Range(0, shootAudioClips.Length)]);
     }
