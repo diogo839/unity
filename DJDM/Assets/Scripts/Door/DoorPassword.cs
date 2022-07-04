@@ -11,7 +11,7 @@ public class DoorPassword : MonoBehaviour
     public string correctPassword;
     public GameObject painel;
     private int maxAttempts = 3;//numero tentativas maximas parar inserir código
-    public AudioSource sound, sound2;
+    public AudioSource sound;
 
 
    
@@ -43,7 +43,7 @@ public class DoorPassword : MonoBehaviour
     {
         if (typedPassword == correctPassword)
         {
-            sound2.Play();
+           
             painel.SetActive(false);
             collider.SetActive(false);
           
