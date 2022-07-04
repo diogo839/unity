@@ -23,9 +23,6 @@ public class EnemyController : MonoBehaviour {
     [SerializeField]
     private float health = 100f;
 
-    private void Start() {
-        //StartCoroutine(StartMovement());
-    }
 
     private void Awake() {
         myRigidbody = GetComponent<Rigidbody2D>();
@@ -37,8 +34,6 @@ public class EnemyController : MonoBehaviour {
     private void Update() {
         myRigidbody.velocity = new Vector2(transform.right.x * walkSpeed,
                 myRigidbody.velocity.y);
-
-       // myAnimator.SetFloat("MovementSpeed", Mathf.Abs(currentWalkSpeed));
     }
 
     private void FixedUpdate() {
@@ -52,11 +47,6 @@ public class EnemyController : MonoBehaviour {
     private void Die() {
         Destroy(gameObject);
     }
-
-    /*private IEnumerator StartMovement() {
-        yield return new WaitForSeconds(3f);
-        currentWalkSpeed = walkSpeed;
-    }*/
 
     private bool CheckForObstacle() {
         if (Physics2D.OverlapPointNonAlloc(

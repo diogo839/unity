@@ -9,8 +9,8 @@ TagManager:
   - Box
   - Lava
   - Ground
-  - chest
   - Boss
+  - Chest
   layers:
   - Default
   - TransparentFX
@@ -30,10 +30,7 @@ TagManager:
   - Box
   - Platform
   - Lava
-  - chest
-  - 
-  - 
-  - 
+  - Chest
   - 
   - 
   - 

@@ -462,6 +462,7 @@ MonoBehaviour:
   jumpAudioClip: {fileID: 0}
   shootAudioClips: []
   myAnimator: {fileID: 0}
+  isAlive: 1
   hasKey: 0
 --- !u!50 &123898136
 Rigidbody2D:
@@ -1211,10 +1212,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: prefabChest Variant
       objectReference: {fileID: 0}
-    - target: {fileID: 925851528960896956, guid: e287ea3e097344da7986b982f07ff3e7, type: 3}
-      propertyPath: m_Layer
-      value: 15
-      objectReference: {fileID: 0}
     - target: {fileID: 925851528960896957, guid: e287ea3e097344da7986b982f07ff3e7, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -1258,22 +1255,6 @@ PrefabInstance:
     - target: {fileID: 925851528960896957, guid: e287ea3e097344da7986b982f07ff3e7, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5258242210957270431, guid: e287ea3e097344da7986b982f07ff3e7, type: 3}
-      propertyPath: m_Size.x
-      value: 1.1294937
-      objectReference: {fileID: 0}
-    - target: {fileID: 5258242210957270431, guid: e287ea3e097344da7986b982f07ff3e7, type: 3}
-      propertyPath: m_Size.y
-      value: 0.8960264
-      objectReference: {fileID: 0}
-    - target: {fileID: 5258242210957270431, guid: e287ea3e097344da7986b982f07ff3e7, type: 3}
-      propertyPath: m_Offset.x
-      value: 0.012672424
-      objectReference: {fileID: 0}
-    - target: {fileID: 5258242210957270431, guid: e287ea3e097344da7986b982f07ff3e7, type: 3}
-      propertyPath: m_Offset.y
-      value: 0.47095263
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e287ea3e097344da7986b982f07ff3e7, type: 3}
@@ -1629,7 +1610,7 @@ RectTransform:
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 1576056123}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
@@ -2424,10 +2405,6 @@ MonoBehaviour:
   bottomLimitTransform: {fileID: 902958839}
   leftLimitTransform: {fileID: 1522902303}
   rightLimitTransform: {fileID: 1758836049}
-  bossTopLimitTransform: {fileID: 0}
-  bossBottomLimitTransform: {fileID: 0}
-  bossLeftLimitTransform: {fileID: 0}
-  bossRightLimitTransform: {fileID: 0}
 --- !u!1001 &952847485
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2650,7 +2627,7 @@ RectTransform:
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 1576056123}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
@@ -3529,7 +3506,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1576056123}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
@@ -4043,6 +4020,7 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1049906494}
   - {fileID: 224977701029660783}
   - {fileID: 2064889845}
   - {fileID: 1401399150}
@@ -5428,7 +5406,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 925851528960896956, guid: e287ea3e097344da7986b982f07ff3e7, type: 3}
       propertyPath: m_Layer
-      value: 15
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 925851528960896957, guid: e287ea3e097344da7986b982f07ff3e7, type: 3}
       propertyPath: m_RootOrder
@@ -5804,7 +5782,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1576056123}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
@@ -5965,7 +5943,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2174823014595679572, guid: 4f4e8390051af6b49b327f61d445d927, type: 3}
       propertyPath: m_RootOrder
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2174823014595679572, guid: 4f4e8390051af6b49b327f61d445d927, type: 3}
       propertyPath: m_AnchorMax.x
