@@ -192,6 +192,7 @@ public class PlayerController : MonoBehaviour {
 
     public void Die() {
         Destroy(gameObject);
+        GameManager.Instance.PlayerDied(true);
     }
 
     private void Shoot() {

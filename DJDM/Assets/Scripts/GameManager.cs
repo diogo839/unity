@@ -89,6 +89,10 @@ public class GameManager : MonoBehaviour {
         }
     }
 
+    public void ReloadCurrentLevel() {
+        StartCoroutine(LoadNextLevelAsync(level));
+    }
+
     public void LoadNextLevel() {
         if (level + 1 < SceneManager.sceneCountInBuildSettings) {
             StartCoroutine(LoadNextLevelAsync(++level));
@@ -158,6 +162,10 @@ public class GameManager : MonoBehaviour {
             Time.timeScale = 1;
         }
         UIManager.Instance.ShowPanelPause(pause);
+    }
+
+    public void PlayerDied(bool dead) {
+        UIManager.Instance.ShowPanelDead(dead);
     }
 
     public int GetLvl() {
