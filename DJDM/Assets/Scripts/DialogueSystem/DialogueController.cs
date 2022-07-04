@@ -8,7 +8,7 @@ public class DialogueController : MonoBehaviour
 {
   
     public static DialogueController instance;
-    public GameObject dialoguePanel;
+    public GameObject dialoguePanel, imagebg;
     public Button nextButton;
     public TextMeshProUGUI dialogueText; 
     public TextMeshProUGUI dialogueSize; 
@@ -20,6 +20,7 @@ public class DialogueController : MonoBehaviour
     public void StartDialogue()
     {
         dialoguePanel.SetActive(true);
+        imagebg.SetActive(true);
 
         if (typing)
         {
@@ -47,6 +48,7 @@ public class DialogueController : MonoBehaviour
     public void StopDialogue()
     {
         dialoguePanel.SetActive(false);
+        imagebg.SetActive(false);
         StopCoroutine(Type());
     }
 

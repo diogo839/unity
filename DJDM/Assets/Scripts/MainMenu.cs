@@ -30,8 +30,9 @@ public class MainMenu : MonoBehaviour
 
     public void OptionsMenu()
     {
-        menuOptions.SetActive(true);
         optionsButton.SetActive(false);
+        menuOptions.SetActive(true);
+      
        
         
     }

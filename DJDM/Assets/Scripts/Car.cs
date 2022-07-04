@@ -17,13 +17,9 @@ public class Car : MonoBehaviour
     public Rigidbody2D myRigidbody;
     public AudioSource audio;
 
-
-    private void Awake()
-    {
-        audio = GetComponent<AudioSource>();
-    }
     void Start()
     {
+        audio = GetComponent<AudioSource>();
         infoText.SetActive(false);
     }
 
@@ -44,18 +40,20 @@ public class Car : MonoBehaviour
         {
             if (player.hasKey)
             {
-                player.hasKey = false; 
-                playerVisual.SetActive(true); 
+               
+                player.hasKey = false;
+                playerVisual.SetActive(true);
                 playerReal = player.gameObject; //Armazena o player real pra ativar quando sair;
                 player.gameObject.SetActive(false); //Desativa o player real                
                 playerInCar = true;
                 SmoothFollow.Instance.SetTarget(this.transform);
                 audio.Play();
             }
-        }
-        else
-        {
-            infoText.SetActive(true);
+            if (player.hasKey == false)
+            {
+                Debug.Log("Sem chave");
+                infoText.SetActive(true);
+            }
         }
     }
 
@@ -95,6 +93,7 @@ public class Car : MonoBehaviour
         playerVisual.SetActive(false);       
         playerReal.transform.position = transform.position; 
         playerReal.SetActive(true); 
+        
         SmoothFollow.Instance.SetTarget(playerReal.transform);
         enabled = false;
         audio.Stop();
