@@ -65,20 +65,6 @@ public class SmoothFollow : MonoBehaviour {
             bottomLimit,
             topLimit
             );
-
-        /*if(targetPosition.y < -2.86f)
-        {
-            targetPosition.y = -2.86f;
-        }
-        if(targetPosition.x < -3.1f)
-        {
-            targetPosition.x = -3.1f;
-        } else if(targetPosition.x > 3.1f)
-        {
-            targetPosition.x = 3.1f;
-        }*/
-
-        //transform.position = targetPosition;
         transform.position = Vector3.SmoothDamp(
             transform.position,
             targetPosition,
@@ -139,6 +125,5 @@ public class SmoothFollow : MonoBehaviour {
 
     public void SetBottomLimit(Transform bottom) {
         bottomLimitTransform = bottom;
-        SetCameraLimits();
     }
 }

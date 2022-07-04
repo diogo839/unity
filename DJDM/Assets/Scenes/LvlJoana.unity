@@ -313,6 +313,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   baseDamage: 10
+  bossBaseDamage: 20
 --- !u!4 &61119882
 Transform:
   m_ObjectHideFlags: 0

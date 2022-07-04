@@ -38,7 +38,7 @@ public class EnemyController : MonoBehaviour {
         myRigidbody.velocity = new Vector2(transform.right.x * walkSpeed,
                 myRigidbody.velocity.y);
 
-        myAnimator.SetFloat("MovementSpeed", Mathf.Abs(currentWalkSpeed));
+       // myAnimator.SetFloat("MovementSpeed", Mathf.Abs(currentWalkSpeed));
     }
 
     private void FixedUpdate() {
