@@ -4,7 +4,12 @@ using UnityEngine;
 using UnityEngine.UI;
 public class SettingsMenu : MonoBehaviour
 {
-    public Slider slider;
+    [SerializeField]
+    private Slider slider;
+    [SerializeField]
+    private GameObject menuOptions;
+    [SerializeField]
+    private GameObject optionsButton;
 
     public void SetFullScreen(bool isFullscreen)
     {
@@ -20,5 +25,9 @@ public class SettingsMenu : MonoBehaviour
     {
         AudioListener.volume = slider.value; 
     }
-    
+
+    public void BackToMenu() {
+        menuOptions.SetActive(false);
+        optionsButton.SetActive(true);
+    }
 }
