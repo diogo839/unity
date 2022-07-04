@@ -8,6 +8,8 @@ public class BossController : MonoBehaviour {
     [SerializeField]
     private Transform shootPointTransform = null;
     [SerializeField]
+    private Transform cameraTransform = null;
+    [SerializeField]
     private float shootSpeed = 2f;
     [SerializeField]
     private float chargeAttackSpeed = 5f;
@@ -68,6 +70,7 @@ public class BossController : MonoBehaviour {
             InvokeRepeating(nameof(Shoot), chargeAttackSpeed, chargeAttackSpeed);
             InvokeRepeating(nameof(Shoot), attackSpeed, attackSpeed);
             Camera.main.orthographicSize = 5;
+            SmoothFollow.Instance.SetTarget(cameraTransform);
         }
     }
     private void OnTriggerExit2D(Collider2D collision) {
@@ -75,6 +78,7 @@ public class BossController : MonoBehaviour {
             currentWalkSpeed = 0f;
             playerIn = false;
             Camera.main.orthographicSize = 3;
+            SmoothFollow.Instance.SetTarget(collision.gameObject.transform);
         }
     }
 

@@ -18,14 +18,6 @@ public class SmoothFollow : MonoBehaviour {
     private Transform leftLimitTransform = null;
     [SerializeField]
     private Transform rightLimitTransform = null;
-    [SerializeField]
-    private Transform bossTopLimitTransform = null;
-    [SerializeField]
-    private Transform bossBottomLimitTransform = null;
-    [SerializeField]
-    private Transform bossLeftLimitTransform = null;
-    [SerializeField]
-    private Transform bossRightLimitTransform = null;
 
     private float cameraZOffset = 0f;
     private Vector3 cameraVelocity;
