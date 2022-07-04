@@ -46,7 +46,7 @@ public class PlayerController : MonoBehaviour {
     private bool onGround = false;
 
     private float life = 100f;
-    private bool isAlive = true;
+    public bool isAlive = true;
     private bool shoot = false;
     public bool hasKey;
 

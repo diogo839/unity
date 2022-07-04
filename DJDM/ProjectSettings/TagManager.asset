@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Enemy
   - Spikes
+  - Box
+  - Lava
+  - Ground
   - chest
   - Boss
   layers:
@@ -24,6 +27,9 @@ TagManager:
   - Spikes
   - Range
   - Collectibles
+  - Box
+  - Platform
+  - Lava
   - chest
   - 
   - 
