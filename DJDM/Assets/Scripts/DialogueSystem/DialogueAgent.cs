@@ -24,6 +24,7 @@ public class DialogueAgent : MonoBehaviour
         {
             DialogueController.instance.StopDialogue();
             DialogueController.instance.currentNPC = null;
+            currentSentence = 0;
         }
     }
 }

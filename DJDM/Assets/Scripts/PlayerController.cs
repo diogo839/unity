@@ -36,7 +36,7 @@ public class PlayerController : MonoBehaviour {
     private AudioClip[] shootAudioClips;
     private AudioSource myAudioSource;
     private Rigidbody2D myRigidbody = null;
-    public Animator myAnimator = null;
+    private Animator myAnimator = null;
 
     private float moveDirection = 0f;
 
@@ -51,6 +51,7 @@ public class PlayerController : MonoBehaviour {
     public bool hasKey;
 
     private bool hit = false;
+    private bool attackCooldown = false;
 
 
 
@@ -116,18 +117,27 @@ public class PlayerController : MonoBehaviour {
                 myAnimator.SetBool("DoubleJump", true);
             }
         }
-        if (hit && !jump) {
+        if (hit && !jump && !attackCooldown) {
             myAnimator.SetTrigger("Attack2");
             GetComponentInChildren<HitPoint>().attacking = true;
+            attackCooldown = true;
+            StartCoroutine("AttackCooldown", 0.5f);
         }
 
-        if (shoot && GameManager.Instance.CanShoot()) {
+        if (shoot && GameManager.Instance.CanShoot() && !attackCooldown) {
             Shoot();
+            attackCooldown = true;
+            StartCoroutine("AttackCooldown", 0.25f);
         }
 
         jump = false;
         shoot = false;
         hit = false;
+    }
+
+    IEnumerator AttackCooldown(float cooldown) {
+        yield return new WaitForSeconds(cooldown);
+        attackCooldown = false;
     }
 
     private bool CheckForFlip() {

@@ -48,8 +48,7 @@ public class Car : MonoBehaviour
                 playerInCar = true;
                 SmoothFollow.Instance.SetTarget(this.transform);
                 audio.Play();
-            }
-            if (player.hasKey == false)
+            } else if (!player.hasKey)
             {
                 Debug.Log("Sem chave");
                 infoText.SetActive(true);

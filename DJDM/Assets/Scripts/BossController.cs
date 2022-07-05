@@ -1,8 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BossController : MonoBehaviour {
+    [SerializeField]
+    private float initialHealth = 1000f;
     [SerializeField]
     private float health = 1000f;
     [SerializeField]
@@ -16,6 +19,9 @@ public class BossController : MonoBehaviour {
     [SerializeField]
     private float attackSpeed = 2f;
 
+    [SerializeField]
+    private Image lifebarImage = null;
+
     private Rigidbody2D rb = null;
     private Animator anim = null;
 
@@ -26,6 +32,9 @@ public class BossController : MonoBehaviour {
     private void Awake() {
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
+
+        health = initialHealth;
+        UpdateLifebar();
     }
 
     private void Update() {
@@ -45,22 +54,33 @@ public class BossController : MonoBehaviour {
     }
     private void Die() {
         Destroy(gameObject);
+        GetComponentInChildren<EndLevel>().End();
     }
 
 
     public void TakeDamage() {
         health -= GameManager.Instance.baseDamage * GameManager.Instance.DamageMultiplier();
+        UpdateLifebar();
+    }
+
+    private void UpdateLifebar() {
+        lifebarImage.fillAmount = health / initialHealth;
     }
 
     private void Flip() {
         Vector3 targetRotation = transform.localEulerAngles;
+        Vector3 oldRotation = targetRotation;
         if (player.transform.position.x < transform.position.x) {
             targetRotation.y = 180;
         } else {
             targetRotation.y = 0;
         }
         transform.localEulerAngles = targetRotation;
-
+        if(oldRotation.y != targetRotation.y) {
+            Vector3 lifebarTargetRotation = lifebarImage.transform.localEulerAngles;
+            lifebarTargetRotation.y += 180;
+            lifebarImage.transform.localEulerAngles = lifebarTargetRotation;
+        }
     }
     private void OnTriggerEnter2D(Collider2D collision) {
         if (collision.CompareTag("Player")) {

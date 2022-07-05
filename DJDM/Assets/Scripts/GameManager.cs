@@ -19,11 +19,9 @@ public class GameManager : MonoBehaviour {
     public float baseDamage = 10f;
     public float bossBaseDamage = 20f;
 
-    //[SerializeField]
-    //public TMP_Text gameScoreText = null;
+    private Dictionary<string, int> levelUpgrades = new Dictionary<string, int>();
 
-    //private int score = 0;
-
+    [SerializeField]
     private int level = 0;
 
 
@@ -42,6 +40,26 @@ public class GameManager : MonoBehaviour {
         upgrades.Add(DAMAGE_BOOST_UPGRADE, 1f);
         upgrades.Add(SPEED_BOOST_UPGRADE, 1f);
         upgrades.Add(JUMP_BOOST_UPGRADE, 1f);
+
+        InitializeLevelUpgrades();
+
+        switch (level) {
+            case 2:
+                UnlockDoubleJump();
+                break;
+            case 3:
+                UnlockShoot();
+                UnlockDoubleJump();
+                break;
+            default:
+                break;
+        }
+    }
+
+    private void InitializeLevelUpgrades() {
+        levelUpgrades.Add(DAMAGE_BOOST_UPGRADE, 0);
+        levelUpgrades.Add(SPEED_BOOST_UPGRADE, 0);
+        levelUpgrades.Add(JUMP_BOOST_UPGRADE, 0);
     }
 
     public bool CanDoubleJump() {
@@ -75,13 +93,32 @@ public class GameManager : MonoBehaviour {
     public void Upgrade(string upgrade) {
         switch (upgrade) {
             case DAMAGE_BOOST_UPGRADE:
-                upgrades[DAMAGE_BOOST_UPGRADE] += 0.1f;
+                upgrades[DAMAGE_BOOST_UPGRADE] += 1f;
+                levelUpgrades[DAMAGE_BOOST_UPGRADE] += 1;
                 break;
             case SPEED_BOOST_UPGRADE:
-                upgrades[SPEED_BOOST_UPGRADE] += 0.1f;
+                upgrades[SPEED_BOOST_UPGRADE] += 0.2f;
+                levelUpgrades[SPEED_BOOST_UPGRADE] += 1;
                 break;
             case JUMP_BOOST_UPGRADE:
-                upgrades[JUMP_BOOST_UPGRADE] += 0.1f;
+                upgrades[JUMP_BOOST_UPGRADE] += 0.05f;
+                levelUpgrades[SPEED_BOOST_UPGRADE] += 1;
+                break;
+            default:
+                Console.WriteLine("Invalid Upgrade");
+                break;
+        }
+    }
+    public void Downgrade(string upgrade) {
+        switch (upgrade) {
+            case DAMAGE_BOOST_UPGRADE:
+                upgrades[DAMAGE_BOOST_UPGRADE] -= 1f;
+                break;
+            case SPEED_BOOST_UPGRADE:
+                upgrades[SPEED_BOOST_UPGRADE] -= 0.2f;
+                break;
+            case JUMP_BOOST_UPGRADE:
+                upgrades[JUMP_BOOST_UPGRADE] -= 0.05f;
                 break;
             default:
                 Console.WriteLine("Invalid Upgrade");
@@ -89,13 +126,44 @@ public class GameManager : MonoBehaviour {
         }
     }
 
-    public void ReloadCurrentLevel() {
-        StartCoroutine(LoadNextLevelAsync(level));
+    private void DowngradesLevel() {
+        print(levelUpgrades);
+        foreach(KeyValuePair<string, int> up in levelUpgrades) {
+            for(int i = 0; i < up.Value; i++) {
+                Downgrade(up.Key);
+            }
+            levelUpgrades[up.Key] = 0;
+        }
+        print(levelUpgrades);
     }
 
     public void LoadNextLevel() {
         if (level + 1 < SceneManager.sceneCountInBuildSettings) {
             StartCoroutine(LoadNextLevelAsync(++level));
+            switch (level) {
+                case 2:
+                    UnlockDoubleJump();
+                    break;
+                case 3:
+                    UnlockShoot();
+                    UnlockDoubleJump();
+                    break;
+                default:
+                    break;
+            }
+            UIManager.Instance.ShowHUD(true);
+        } else {
+            print("End Game!");
+        }
+        if (level == SceneManager.sceneCountInBuildSettings - 1) {
+            UIManager.Instance.ShowHUD(false);
+        }
+    }
+
+    public void ReloadLevel() {
+        if (level + 1 < SceneManager.sceneCountInBuildSettings) {
+            StartCoroutine(LoadNextLevelAsync(level));
+            DowngradesLevel();
             switch (level) {
                 case 2:
                     UnlockDoubleJump();

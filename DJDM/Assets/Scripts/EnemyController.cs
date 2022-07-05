@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class EnemyController : MonoBehaviour {
     [SerializeField]
@@ -21,7 +22,12 @@ public class EnemyController : MonoBehaviour {
     private float currentWalkSpeed = 0;
 
     [SerializeField]
+    private float initialHealth = 100f;
+    [SerializeField]
     private float health = 100f;
+
+    [SerializeField]
+    private Image lifebarImage = null;
 
 
     private void Awake() {
@@ -29,6 +35,8 @@ public class EnemyController : MonoBehaviour {
         myAnimator = GetComponent<Animator>();
 
         currentWalkSpeed = walkSpeed;
+        health = initialHealth;
+        UpdateLifebar();
     }
 
     private void Update() {
@@ -60,12 +68,21 @@ public class EnemyController : MonoBehaviour {
 
     public void TakeDamage() {
         health -= GameManager.Instance.baseDamage * GameManager.Instance.DamageMultiplier();
+        UpdateLifebar();
+    }
+
+    private void UpdateLifebar() {
+        lifebarImage.fillAmount = health / initialHealth;
     }
 
     private void Flip() {
         Vector3 targetRotation = transform.localEulerAngles;
         targetRotation.y += 180f;
         transform.localEulerAngles = targetRotation;
+
+        Vector3 lifebarTargetRotation = lifebarImage.transform.localEulerAngles;
+        lifebarTargetRotation.y += 180;
+        lifebarImage.transform.localEulerAngles = lifebarTargetRotation;
     }
 
     private void OnTriggerEnter2D(Collider2D collision) {

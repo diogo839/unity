@@ -16,10 +16,11 @@ public class DoorPassword : MonoBehaviour
 
    
     public GameObject collider;
+    [SerializeField]
+    private GameObject nextLevelGameObject = null;
 
     public void Start()
     {
-       
         collider.SetActive(true);
     }
 
@@ -43,23 +44,13 @@ public class DoorPassword : MonoBehaviour
     {
         if (typedPassword == correctPassword)
         {
-           
             painel.SetActive(false);
             collider.SetActive(false);
-          
-         
+            nextLevelGameObject.layer = LayerMask.NameToLayer("Ground");
         }
         if (typedPassword != correctPassword)
         {
-            //  maxAttempts = maxAttempts - 1;
             sound.Play();
-          
-            
-        }
-        if (maxAttempts == 0)
-        {
-          
-           
         }
     }
 

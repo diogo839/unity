@@ -15,7 +15,7 @@ public class Door : MonoBehaviour
         if (other.gameObject.tag == "Player")
         {
             DoorPassword door = GetComponent<DoorPassword>();
-          panel.SetActive(true);
+            panel.SetActive(true);
         }
     }
 

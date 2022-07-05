@@ -54,7 +54,7 @@ public class DialogueController : MonoBehaviour
 
     #region TYPE
 
-    WaitForSeconds wait = new WaitForSeconds(0.1f);
+    WaitForSeconds wait = new WaitForSeconds(0.05f);
 
     private IEnumerator Type()
     {
