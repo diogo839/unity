@@ -161,24 +161,20 @@ public class GameManager : MonoBehaviour {
     }
 
     public void ReloadLevel() {
-        if (level + 1 < SceneManager.sceneCountInBuildSettings) {
-            StartCoroutine(LoadNextLevelAsync(level));
-            DowngradesLevel();
-            switch (level) {
-                case 2:
-                    UnlockDoubleJump();
-                    break;
-                case 3:
-                    UnlockShoot();
-                    UnlockDoubleJump();
-                    break;
-                default:
-                    break;
-            }
-            UIManager.Instance.ShowHUD(true);
-        } else {
-            print("End Game!");
+        StartCoroutine(LoadNextLevelAsync(level));
+        DowngradesLevel();
+        switch (level) {
+            case 2:
+                UnlockDoubleJump();
+                break;
+            case 3:
+                UnlockShoot();
+                UnlockDoubleJump();
+                break;
+            default:
+                break;
         }
+        UIManager.Instance.ShowHUD(true);
         if (level == SceneManager.sceneCountInBuildSettings - 1) {
             UIManager.Instance.ShowHUD(false);
         }
