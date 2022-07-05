@@ -7,9 +7,12 @@ public class Lava : MonoBehaviour {
     private float damage = 25f;
     [SerializeField]
     private PlayerController playerController;
-    public AudioSource audio;
-    private bool inLava = false;
     IEnumerator coroutine;
+
+    [SerializeField]
+    private AudioSource playerAudioSource = null;
+    [SerializeField]
+    private AudioClip screamAudioClip;
 
     private void Awake() {
         coroutine = TakeDamage(playerController);
@@ -17,21 +20,23 @@ public class Lava : MonoBehaviour {
 
     private void OnCollisionEnter2D(Collision2D other) {
         if (other.gameObject.CompareTag("Player")) {
-            audio.Play();
             StartCoroutine(coroutine);
+            playerAudioSource.clip = screamAudioClip;
+            playerAudioSource.Play();
         }
     }
 
     private void OnCollisionExit2D(Collision2D collision) {
         if (collision.gameObject.CompareTag("Player")) {
-            audio.Stop();
             StopCoroutine(coroutine);
+            playerAudioSource.Stop();
+            playerAudioSource.clip = null;
         }
     }
     IEnumerator TakeDamage(PlayerController player) {
         while (true) {
             yield return new WaitForFixedUpdate();
-            player.TakeDamage(damage);
+            player.TakeLavaDamage(damage);
         }
     }
 }

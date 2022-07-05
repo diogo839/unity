@@ -11,11 +11,6 @@ public class SettingsMenu : MonoBehaviour
     [SerializeField]
     private GameObject optionsButton;
 
-    public void SetFullScreen(bool isFullscreen)
-    {
-        Screen.fullScreen = isFullscreen;
-    }
-
     public void SetQuality(int qualityIndex)
     {
         QualitySettings.SetQualityLevel(qualityIndex);
@@ -29,5 +24,6 @@ public class SettingsMenu : MonoBehaviour
     public void BackToMenu() {
         menuOptions.SetActive(false);
         optionsButton.SetActive(true);
+        UIManager.Instance.ShowSlider(false);
     }
 }

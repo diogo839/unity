@@ -27,13 +27,19 @@ public class PlayerController : MonoBehaviour {
     
     [Header("UI")]
     [SerializeField]
-    private Image lifebarImage = null;
+    private Image lifebarImage = null; 
+    [SerializeField]
+    private GameObject wonderPanel;
 
     [Header("Audio")]
     [SerializeField]
     private AudioClip jumpAudioClip;
     [SerializeField]
-    private AudioClip[] shootAudioClips;
+    private AudioClip shootAudioClip;
+    [SerializeField]
+    private AudioClip swingAudioClip;
+    [SerializeField]
+    private AudioClip hurtAudioClip;
     private AudioSource myAudioSource;
     private Rigidbody2D myRigidbody = null;
     private Animator myAnimator = null;
@@ -65,6 +71,15 @@ public class PlayerController : MonoBehaviour {
 
     private void Start() {
         UpdateLifebar();
+        if(GameManager.Instance.GetLvl() == 2) {
+            StartCoroutine(WonderPanel());
+        }
+    }
+
+    IEnumerator WonderPanel() {
+        wonderPanel.SetActive(true);
+        yield return new WaitForSeconds(5f);
+        wonderPanel.SetActive(false);
     }
 
     private void Update() {
@@ -118,8 +133,7 @@ public class PlayerController : MonoBehaviour {
             }
         }
         if (hit && !jump && !attackCooldown) {
-            myAnimator.SetTrigger("Attack2");
-            GetComponentInChildren<HitPoint>().attacking = true;
+            Swing();
             attackCooldown = true;
             StartCoroutine("AttackCooldown", 0.5f);
         }
@@ -162,8 +176,7 @@ public class PlayerController : MonoBehaviour {
         transform.localEulerAngles = targetRotation;
     }
     private void Jump() {
-        //play jump audio
-        //myAudioSource.PlayOneShot(jumpAudioClip);
+        myAudioSource.PlayOneShot(jumpAudioClip);
 
         myRigidbody.velocity = new Vector2(
             myRigidbody.velocity.x, 0);
@@ -185,6 +198,7 @@ public class PlayerController : MonoBehaviour {
 
             UpdateLifebar();
             myAnimator.SetBool("Damage", true);
+            myAudioSource.PlayOneShot(hurtAudioClip);
 
             if (life == 0) {
                 isAlive = false;
@@ -192,6 +206,25 @@ public class PlayerController : MonoBehaviour {
             }
         }
     }
+
+    public void TakeLavaDamage(float damage) { //So it doesnt play sound and we can have a different sound for the lava
+        if (isAlive) {
+            life -= damage;
+
+            if (life < 0) {
+                life = 0;
+            }
+
+            UpdateLifebar();
+            myAnimator.SetBool("Damage", true);
+
+            if (life == 0) {
+                isAlive = false;
+                Die();
+            }
+        }
+    }
+
     private void OnTriggerExit2D(Collider2D collision) {
         if (collision.CompareTag("Enemy") || collision.CompareTag("Spikes")) {
             myAnimator.SetBool("Damage", false);
@@ -213,9 +246,17 @@ public class PlayerController : MonoBehaviour {
         brick.SetActive(true);
         brick.GetComponent<Rigidbody2D>().velocity =
             shootPointTransform.right * shootSpeed;
-        //play shoot audio
-        //myAudioSource.PlayOneShot(shootAudioClips[Random.Range(0, shootAudioClips.Length)]);
+
+        myAudioSource.PlayOneShot(shootAudioClip);
     }
+
+    private void Swing() {
+        myAnimator.SetTrigger("Attack2");
+        GetComponentInChildren<HitPoint>().attacking = true;
+
+        myAudioSource.PlayOneShot(swingAudioClip);
+    }
+
     IEnumerator Wait() {
         yield return new WaitForSeconds(0.5f);
         myAnimator.SetBool("Damage", false);

@@ -72,7 +72,9 @@ public class EnemyController : MonoBehaviour {
     }
 
     private void UpdateLifebar() {
-        lifebarImage.fillAmount = health / initialHealth;
+        if (lifebarImage != null) {
+            lifebarImage.fillAmount = health / initialHealth;
+        }
     }
 
     private void Flip() {
@@ -80,9 +82,11 @@ public class EnemyController : MonoBehaviour {
         targetRotation.y += 180f;
         transform.localEulerAngles = targetRotation;
 
-        Vector3 lifebarTargetRotation = lifebarImage.transform.localEulerAngles;
-        lifebarTargetRotation.y += 180;
-        lifebarImage.transform.localEulerAngles = lifebarTargetRotation;
+        if(lifebarImage != null) {
+            Vector3 lifebarTargetRotation = lifebarImage.transform.localEulerAngles;
+            lifebarTargetRotation.y += 180;
+            lifebarImage.transform.localEulerAngles = lifebarTargetRotation;
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision) {

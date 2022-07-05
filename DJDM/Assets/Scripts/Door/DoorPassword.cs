@@ -13,15 +13,16 @@ public class DoorPassword : MonoBehaviour
     private int maxAttempts = 3;//numero tentativas maximas parar inserir código
     public AudioSource sound;
 
+    [SerializeField]
+    private AudioClip rightAudioClip;
+    [SerializeField]
+    private AudioClip wrongAudioClip;
 
-   
-    public GameObject collider;
     [SerializeField]
     private GameObject nextLevelGameObject = null;
 
     public void Start()
     {
-        collider.SetActive(true);
     }
 
     public void AddNumber(int num)
@@ -45,12 +46,12 @@ public class DoorPassword : MonoBehaviour
         if (typedPassword == correctPassword)
         {
             painel.SetActive(false);
-            collider.SetActive(false);
             nextLevelGameObject.layer = LayerMask.NameToLayer("Ground");
+            sound.PlayOneShot(rightAudioClip);
         }
         if (typedPassword != correctPassword)
         {
-            sound.Play();
+            sound.PlayOneShot(wrongAudioClip);
         }
     }
 

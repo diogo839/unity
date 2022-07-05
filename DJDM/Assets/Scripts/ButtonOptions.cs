@@ -12,5 +12,6 @@ public class ButtonOptions : MonoBehaviour
     public void OptionsMenu() {
         menuOptions.SetActive(true);
         optionsButton.SetActive(false);
+        UIManager.Instance.ShowSlider(true);
     }
 }

@@ -55,7 +55,6 @@ public class GameManager : MonoBehaviour {
                 break;
         }
     }
-
     private void InitializeLevelUpgrades() {
         levelUpgrades.Add(DAMAGE_BOOST_UPGRADE, 0);
         levelUpgrades.Add(SPEED_BOOST_UPGRADE, 0);
@@ -213,9 +212,11 @@ public class GameManager : MonoBehaviour {
     }
 
     public void LoadMainMenu() {
-        StartCoroutine(LoadNextLevelAsync(0));
         level = 0;
         UIManager.Instance.ShowHUD(false);
+        levelUpgrades.Clear();
+        InitializeLevelUpgrades();
+        StartCoroutine(LoadNextLevelAsync(0));
     }
 
     public void PauseGame(bool pause) {

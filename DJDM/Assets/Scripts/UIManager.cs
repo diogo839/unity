@@ -13,6 +13,8 @@ public class UIManager : MonoBehaviour
     private GameObject panelPause;
     [SerializeField]
     private GameObject panelDead;
+    [SerializeField]
+    private GameObject slider;
 
     private void Awake() {
         if (Instance == null) {
@@ -33,5 +35,8 @@ public class UIManager : MonoBehaviour
 
     public void ShowHUD(bool value) {
         panelHUD.SetActive(value);
+    }
+    public void ShowSlider(bool value) {
+        slider.SetActive(value);
     }
 }
